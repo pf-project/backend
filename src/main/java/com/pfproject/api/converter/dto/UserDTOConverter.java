@@ -22,7 +22,7 @@ public class UserDTOConverter implements Converter<UserDTO, User> {
         user.setEnabled(true);
 
         List<Authority> authorities = new ArrayList<>();
-        authorities.add(Authority.ROLE_USER);
+        authorities.add(dto.getAuthority());
         user.setAuthorities(authorities);
         return user;
     }

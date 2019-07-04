@@ -1,6 +1,7 @@
 package com.pfproject.api.dto;
 
 import java.io.Serializable;
+import com.pfproject.api.model.Authority;
 
 
 public class UserDTO implements Serializable {
@@ -9,9 +10,20 @@ public class UserDTO implements Serializable {
 
     private String username;
     private String password;
+    private Authority authority;
+
 
     public UserDTO() {
     }
+
+    public Authority  getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
+    }
+
 
     public String getUsername() {
         return username;
