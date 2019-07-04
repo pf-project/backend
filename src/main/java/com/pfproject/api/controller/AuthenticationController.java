@@ -25,7 +25,6 @@ public class AuthenticationController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> authenticate(@RequestBody final LoginDTO dto) {
-        //System.out.println(dto.getUsername()+" something");
         final String token = tokenService.getToken(dto.getUsername(), dto.getPassword());
         if (token != null) {
             final TokenDTO response = new TokenDTO();
