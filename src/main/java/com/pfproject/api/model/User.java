@@ -6,12 +6,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-
 public class User extends BaseEntity implements UserDetails {
 
     private static final long serialVersionUID = 7954325925563724664L;
 
-    private List<Authority> authorities;
+    // private List<Authority> authorities;
+    private Authority authority;
     private String username;
     private String password;
     private boolean accountNonExpired;
@@ -19,9 +19,18 @@ public class User extends BaseEntity implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean isEnabled;
 
+    // this class should override this method
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return null;
+    }
+
+    public Authority getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
     }
 
     @Override
@@ -52,10 +61,6 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isEnabled;
-    }
-
-    public void setAuthorities(final List<Authority> authorities) {
-        this.authorities = authorities;
     }
 
     public void setUsername(final String username) {

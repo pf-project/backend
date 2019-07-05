@@ -8,7 +8,6 @@ import org.springframework.core.convert.converter.Converter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class UserDTOConverter implements Converter<UserDTO, User> {
 
     @Override
@@ -21,9 +20,12 @@ public class UserDTOConverter implements Converter<UserDTO, User> {
         user.setCredentialsNonExpired(false);
         user.setEnabled(true);
 
-        List<Authority> authorities = new ArrayList<>();
-        authorities.add(dto.getAuthority());
-        user.setAuthorities(authorities);
+        // incase of multiple roles we use this
+        // List<Authority> authorities = new ArrayList<>();
+        // authorities.add(dto.getAuthority());
+        // user.setAuthorities(authorities);
+
+        user.setAuthority(dto.getAuthority());
         return user;
     }
 }

@@ -15,7 +15,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Service
 public class JsonWebTokenService implements TokenService {
 
@@ -49,6 +48,7 @@ public class JsonWebTokenService implements TokenService {
             JwtBuilder jwtBuilder = Jwts.builder();
             jwtBuilder.setExpiration(calendar.getTime());
             jwtBuilder.setClaims(tokenData);
+
             return jwtBuilder.signWith(SignatureAlgorithm.HS512, tokenKey).compact();
 
         } else {
