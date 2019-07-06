@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import com.pfproject.api.model.User;
+import com.pfproject.api.model.Response;;
+import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -22,8 +25,7 @@ public class SignUpController {
     private final ConverterFacade converterFacade;
 
     @Autowired
-    public SignUpController(final UserService service,
-                            final ConverterFacade converterFacade) {
+    public SignUpController(final UserService service, final ConverterFacade converterFacade) {
         this.service = service;
         this.converterFacade = converterFacade;
     }
@@ -32,6 +34,7 @@ public class SignUpController {
     public ResponseEntity<?> signUp(@RequestBody final UserDTO dto) {
         return new ResponseEntity<>(service.create(converterFacade.convert(dto)), HttpStatus.OK);
     }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final UserDTO dto) {
         return new ResponseEntity<>(service.create(converterFacade.convert(dto)), HttpStatus.OK);
@@ -39,8 +42,18 @@ public class SignUpController {
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+        List<User> liste = service.findAll();
+        ArrayList<Response> response = new ArrayList<Response>();
+        for (User user : liste) {
+            Response r = new Response();
+            r.setAuthority(user.getAuthority());
+            r.setUsername(user.getUsername());
+            r.setId(user.getId());
+            response.add(r);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
     @RequestMapping(value = "/find/{username}", method = RequestMethod.GET)
     public ResponseEntity<?> findByUsername(@PathVariable final String username) {
         System.out.println(username);
@@ -48,8 +61,8 @@ public class SignUpController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> update(@PathVariable final String id,@RequestBody final UserDTO dto) {
-        return new ResponseEntity<>(service.update(id,converterFacade.convert(dto)), HttpStatus.OK);
+    public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final UserDTO dto) {
+        return new ResponseEntity<>(service.update(id, converterFacade.convert(dto)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
@@ -57,5 +70,5 @@ public class SignUpController {
         service.delete(id);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-    
+
 }
