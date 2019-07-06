@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.pfproject.api.model.User;
-import com.pfproject.api.model.Response;;
+import com.pfproject.api.model.Response;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -37,7 +37,12 @@ public class SignUpController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final UserDTO dto) {
-        return new ResponseEntity<>(service.create(converterFacade.convert(dto)), HttpStatus.OK);
+        User user = service.create(converterFacade.convert(dto));
+        Response response = new Response();
+        response.setAuthority(user.getAuthority());
+        response.setUsername(user.getUsername());
+        response.setId(user.getId());
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
