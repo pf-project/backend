@@ -1,7 +1,9 @@
 package com.pfproject.api.controller;
 
+import com.pfproject.api.model.ResponseWithToken;
 import com.pfproject.api.dto.LoginDTO;
-import com.pfproject.api.dto.TokenDTO;
+import com.pfproject.api.model.User;
+
 import com.pfproject.api.dto.MessageDTO;
 import com.pfproject.api.security.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,9 @@ public class AuthenticationController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> authenticate(@RequestBody final LoginDTO dto) {
-        final String token = tokenService.getToken(dto.getUsername(), dto.getPassword());
-        if (token != null) {
-            final TokenDTO response = new TokenDTO();
-            response.setToken(token);
-            return new ResponseEntity<>(response, HttpStatus.OK);
+        final ResponseWithToken res = tokenService.getToken(dto.getUsername(), dto.getPassword());
+        if (res.getToken() != null) {
+            return new ResponseEntity<>(res, HttpStatus.OK);
         } else {
             final MessageDTO response = new MessageDTO();
             response.setMessage("Authentication failed");

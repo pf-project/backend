@@ -2,6 +2,7 @@ package com.pfproject.api.security.service;
 
 import com.pfproject.api.exception.model.ServiceException;
 import com.pfproject.api.model.User;
+import com.pfproject.api.model.ResponseWithToken;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -31,7 +32,7 @@ public class JsonWebTokenService implements TokenService {
     }
 
     @Override
-    public String getToken(final String username, final String password) {
+    public ResponseWithToken getToken(final String username, final String password) {
         if (username == null || password == null) {
             return null;
         }
@@ -49,7 +50,13 @@ public class JsonWebTokenService implements TokenService {
             jwtBuilder.setExpiration(calendar.getTime());
             jwtBuilder.setClaims(tokenData);
 
-            return jwtBuilder.signWith(SignatureAlgorithm.HS512, tokenKey).compact();
+            String token = jwtBuilder.signWith(SignatureAlgorithm.HS512, tokenKey).compact();
+            ResponseWithToken response = new ResponseWithToken();
+            response.setToken(token);
+            response.setAuthority(user.getAuthority());
+            response.setUsername(user.getUsername());
+            response.setId(user.getId());
+            return response;
 
         } else {
             throw new ServiceException("Authentication error", this.getClass().getName());

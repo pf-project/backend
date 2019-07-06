@@ -1,7 +1,8 @@
 package com.pfproject.api.security.service;
 
+import com.pfproject.api.model.ResponseWithToken;
 
 public interface TokenService {
 
-    String getToken(String username, String password);
+    ResponseWithToken getToken(String username, String password);
 }
