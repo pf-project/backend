@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @Service
 public class JsonWebTokenService implements TokenService {
@@ -32,35 +33,43 @@ public class JsonWebTokenService implements TokenService {
     }
 
     @Override
-    public ResponseWithToken getToken(final String username, final String password) {
+    public ResponseWithToken getToken(final String username, final String password) throws Exception {
         if (username == null || password == null) {
             return null;
         }
-        final User user = (User) userDetailsService.loadUserByUsername(username);
-        Map<String, Object> tokenData = new HashMap<>();
-        if (password.equals(user.getPassword())) {
-            tokenData.put("clientType", "user");
-            tokenData.put("userID", user.getId());
-            tokenData.put("username", user.getUsername());
-            tokenData.put("token_create_date", LocalDateTime.now());
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.MINUTE, tokenExpirationTime);
-            tokenData.put("token_expiration_date", calendar.getTime());
-            JwtBuilder jwtBuilder = Jwts.builder();
-            jwtBuilder.setExpiration(calendar.getTime());
-            jwtBuilder.setClaims(tokenData);
+        try {
+            final User user = (User) userDetailsService.loadUserByUsername(username);
+            Map<String, Object> tokenData = new HashMap<>();
+            if (password.equals(user.getPassword())) {
+                tokenData.put("clientType", "user");
+                tokenData.put("userID", user.getId());
+                tokenData.put("username", user.getUsername());
+                tokenData.put("token_create_date", LocalDateTime.now());
+                Calendar calendar = Calendar.getInstance();
+                calendar.add(Calendar.MINUTE, tokenExpirationTime);
+                tokenData.put("token_expiration_date", calendar.getTime());
+                JwtBuilder jwtBuilder = Jwts.builder();
+                jwtBuilder.setExpiration(calendar.getTime());
+                jwtBuilder.setClaims(tokenData);
 
-            String token = jwtBuilder.signWith(SignatureAlgorithm.HS512, tokenKey).compact();
-            ResponseWithToken response = new ResponseWithToken();
-            response.setToken(token);
-            response.setAuthority(user.getAuthority());
-            response.setUsername(user.getUsername());
-            response.setId(user.getId());
-            return response;
+                String token = jwtBuilder.signWith(SignatureAlgorithm.HS512, tokenKey).compact();
+                ResponseWithToken response = new ResponseWithToken();
+                response.setToken(token);
+                response.setAuthority(user.getAuthority());
+                response.setUsername(user.getUsername());
+                response.setId(user.getId());
+                response.setFirstLogin(user.isFirstLogin());
+                response.setEnabled(user.isEnabled());
+                return response;
 
-        } else {
-            throw new ServiceException("Authentication error", this.getClass().getName());
+            } else {
+                throw new UsernameNotFoundException("Nom d'utilisateur ou mot de passe incorrect");
+            }
+
+        } catch (UsernameNotFoundException ex) {
+            throw new UsernameNotFoundException("Nom d'utilisateur ou mot de passe incorrect");
         }
+
     }
 
     public static void setTokenExpirationTime(final int tokenExpirationTime) {

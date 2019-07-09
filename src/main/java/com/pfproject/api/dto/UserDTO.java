@@ -10,8 +10,13 @@ public class UserDTO implements Serializable {
     private String username;
     private String password;
     private Authority authority;
+    private boolean firstLogin;
 
     public UserDTO() {
+    }
+
+    public boolean isFirstLogin() {
+        return this.firstLogin;
     }
 
     public Authority getAuthority() {
@@ -36,5 +41,9 @@ public class UserDTO implements Serializable {
 
     public void setPassword(final String password) {
         this.password = password;
+    }
+
+    public void setFirstLogin(final boolean firstLogin) {
+        this.firstLogin = firstLogin;
     }
 }

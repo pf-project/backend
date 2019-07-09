@@ -2,8 +2,9 @@ package com.pfproject.api.model;
 
 public class Response {
     private String id;
-    private Authority authority;
-    private String username;
+    private Authority role;
+    private String pseudo_nom;
+    private boolean activé;
 
     public String getId() {
         return this.id;
@@ -13,20 +14,28 @@ public class Response {
         this.id = id;
     }
 
-    public Authority getAuthority() {
-        return this.authority;
+    public boolean isEnabled() {
+        return this.activé;
     }
 
-    public void setAuthority(Authority authority) {
-        this.authority = authority;
+    public void setEnabled(boolean activé) {
+        this.activé = activé;
+    }
+
+    public Authority getAuthority() {
+        return this.role;
+    }
+
+    public void setAuthority(Authority role) {
+        this.role = role;
     }
 
     public String getUsername() {
-        return this.username;
+        return this.pseudo_nom;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String pseudo_nom) {
+        this.pseudo_nom = pseudo_nom;
     }
 
 }

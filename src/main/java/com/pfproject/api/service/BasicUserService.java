@@ -21,6 +21,7 @@ public class BasicUserService implements UserService {
     @Override
     public User create(final User user) {
         user.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        user.setFirstLogin(true);
         return repository.save(user);
     }
 

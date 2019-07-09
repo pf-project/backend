@@ -18,6 +18,7 @@ public class User extends BaseEntity implements UserDetails {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean isEnabled;
+    private boolean firstLogin;
 
     // this class should override this method
     @Override
@@ -63,6 +64,10 @@ public class User extends BaseEntity implements UserDetails {
         return isEnabled;
     }
 
+    public boolean isFirstLogin() {
+        return this.firstLogin;
+    }
+
     public void setUsername(final String username) {
         this.username = username;
     }
@@ -85,5 +90,9 @@ public class User extends BaseEntity implements UserDetails {
 
     public void setEnabled(final boolean enabled) {
         isEnabled = enabled;
+    }
+
+    public void setFirstLogin(final boolean firstLogin) {
+        this.firstLogin = firstLogin;
     }
 }

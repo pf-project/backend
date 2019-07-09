@@ -4,5 +4,5 @@ import com.pfproject.api.model.ResponseWithToken;
 
 public interface TokenService {
 
-    ResponseWithToken getToken(String username, String password);
+    ResponseWithToken getToken(String username, String password) throws Exception;
 }

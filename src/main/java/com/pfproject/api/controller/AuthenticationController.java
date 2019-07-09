@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/user/auth")
 public class AuthenticationController {
 
     private final TokenService tokenService;
@@ -27,13 +27,24 @@ public class AuthenticationController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> authenticate(@RequestBody final LoginDTO dto) {
-        final ResponseWithToken res = tokenService.getToken(dto.getUsername(), dto.getPassword());
-        if (res.getToken() != null) {
-            return new ResponseEntity<>(res, HttpStatus.OK);
-        } else {
-            final MessageDTO response = new MessageDTO();
-            response.setMessage("Authentication failed");
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        final ResponseWithToken res;
+        final MessageDTO response = new MessageDTO();
+        try {
+            res = tokenService.getToken(dto.getUsername(), dto.getPassword());
+            if (res.getToken() != null) {
+                if (res.isEnabled()) {
+                    return new ResponseEntity<>(res, HttpStatus.OK);
+                }
+                response.setMessage("Compte bloqué,Contacter votre administrateur");
+                return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+            } else {
+                response.setMessage("nom d'utilisateur ou mot de passe incorrect");
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            }
+        } catch (Exception e) {
+            response.setMessage(e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
+
     }
 }
