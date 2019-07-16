@@ -2,6 +2,7 @@ package com.pfproject.api.exception.handler;
 
 import com.pfproject.api.exception.model.ServiceException;
 import com.pfproject.api.exception.model.UserNotFoundException;
+import com.pfproject.api.exception.model.AccessDenied;
 import com.mongodb.MongoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
 
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
@@ -44,4 +44,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(exception.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(AccessDenied.class)
+    public ResponseEntity handleAccessDenied(final AccessDenied exception) {
+        log.warn("Access Denied: {}", exception.getMessage());
+
+        return new ResponseEntity<>(exception.getLocalizedMessage(), HttpStatus.FORBIDDEN);
+    }
+
 }

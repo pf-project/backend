@@ -7,6 +7,8 @@ import com.pfproject.api.dto.MessageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping(value = "/api/user")
+
 public class SignUpController {
 
     private final UserService service;
@@ -36,6 +39,7 @@ public class SignUpController {
         return new ResponseEntity<>(service.create(converterFacade.convert(dto)), HttpStatus.OK);
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final UserDTO dto) {
         User user = service.create(converterFacade.convert(dto));
@@ -46,6 +50,7 @@ public class SignUpController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
         List<User> liste = service.findAll();
@@ -67,7 +72,7 @@ public class SignUpController {
     // {
     // return new ResponseEntity<>(service.findByUsername(username), HttpStatus.OK);
     // }
-
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final UserDTO dto) {
         User user = service.find(id);
@@ -96,6 +101,7 @@ public class SignUpController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/disable/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable final String id) {
         // service.delete(id);

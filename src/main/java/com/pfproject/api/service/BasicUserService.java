@@ -1,10 +1,13 @@
 package com.pfproject.api.service;
 
+import com.pfproject.api.exception.model.AccessDenied;
+import com.pfproject.api.model.Authority;
 import com.pfproject.api.model.User;
 import com.pfproject.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.List;
 

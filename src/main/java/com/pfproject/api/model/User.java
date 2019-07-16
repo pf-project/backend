@@ -10,7 +10,7 @@ public class User extends BaseEntity implements UserDetails {
 
     private static final long serialVersionUID = 7954325925563724664L;
 
-    // private List<Authority> authorities;
+    private List<Authority> authorities;
     private Authority authority;
     private String username;
     private String password;
@@ -23,7 +23,11 @@ public class User extends BaseEntity implements UserDetails {
     // this class should override this method
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
+    }
+
+    public void setAuthorities(final List<Authority> authorities) {
+        this.authorities = authorities;
     }
 
     public Authority getAuthority() {

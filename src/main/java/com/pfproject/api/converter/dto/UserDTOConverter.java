@@ -20,10 +20,9 @@ public class UserDTOConverter implements Converter<UserDTO, User> {
         user.setCredentialsNonExpired(false);
         user.setEnabled(true);
 
-        // incase of multiple roles we use this
-        // List<Authority> authorities = new ArrayList<>();
-        // authorities.add(dto.getAuthority());
-        // user.setAuthorities(authorities);
+        List<Authority> authorities = new ArrayList<>();
+        authorities.add(dto.getAuthority());
+        user.setAuthorities(authorities);
 
         user.setAuthority(dto.getAuthority());
         return user;
