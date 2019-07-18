@@ -1,0 +1,13 @@
+[
+  {
+    "nom": "char 25",
+    "condition": {
+      "type": "numerique",
+
+      "longueur": "15",
+
+      "obligatoire": "true",
+      "valeur": ["", "", ""]
+    }
+  }
+]

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,13 +35,13 @@ public class SignUpController {
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public ResponseEntity<?> signUp(@RequestBody final UserDTO dto) {
-        return new ResponseEntity<>(service.create(converterFacade.convert(dto)), HttpStatus.OK);
+        return new ResponseEntity<>(service.create(converterFacade.convertUser(dto)), HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final UserDTO dto) {
-        User user = service.create(converterFacade.convert(dto));
+        User user = service.create(converterFacade.convertUser(dto));
         Response response = new Response();
         response.setAuthority(user.getAuthority());
         response.setUsername(user.getUsername());

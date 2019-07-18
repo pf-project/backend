@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 @Service
 public class JsonWebTokenAuthenticationService implements TokenAuthenticationService {
 
@@ -40,7 +39,7 @@ public class JsonWebTokenAuthenticationService implements TokenAuthenticationSer
         final Jws<Claims> tokenData = parseToken(token);
         if (tokenData != null) {
             User user = getUserFromToken(tokenData);
-            if (user != null) {
+            if (user != null && user.isEnabled()) {
                 return new UserAuthentication(user);
             }
         }
@@ -51,8 +50,8 @@ public class JsonWebTokenAuthenticationService implements TokenAuthenticationSer
         if (token != null) {
             try {
                 return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
-            } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException
-                    | SignatureException | IllegalArgumentException e) {
+            } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException
+                    | IllegalArgumentException e) {
                 return null;
             }
         }
@@ -61,11 +60,9 @@ public class JsonWebTokenAuthenticationService implements TokenAuthenticationSer
 
     private User getUserFromToken(final Jws<Claims> tokenData) {
         try {
-            return (User) userDetailsService
-                    .loadUserByUsername(tokenData.getBody().get("username").toString());
+            return (User) userDetailsService.loadUserByUsername(tokenData.getBody().get("username").toString());
         } catch (UsernameNotFoundException e) {
-            throw new UserNotFoundException("User "
-                    + tokenData.getBody().get("username").toString() + " not found");
+            throw new UserNotFoundException("User " + tokenData.getBody().get("username").toString() + " not found");
         }
     }
 }

@@ -12,7 +12,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-
 public class AuthenticationTokenFilter extends GenericFilterBean {
 
     private final TokenAuthenticationService authenticationService;
@@ -22,8 +21,7 @@ public class AuthenticationTokenFilter extends GenericFilterBean {
     }
 
     @Override
-    public void doFilter(final ServletRequest request, final ServletResponse response,
-                         final FilterChain filterChain)
+    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain filterChain)
             throws IOException, ServletException {
         final HttpServletRequest httpRequest = (HttpServletRequest) request;
         final Authentication authentication = authenticationService.authenticate(httpRequest);

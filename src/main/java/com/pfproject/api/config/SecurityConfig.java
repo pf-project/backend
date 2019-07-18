@@ -1,7 +1,5 @@
 package com.pfproject.api.config;
 
-import javax.swing.text.html.HTMLEditorKit.LinkController;
-
 import com.pfproject.api.security.filter.AuthenticationTokenFilter;
 import com.pfproject.api.security.service.TokenAuthenticationService;
 
@@ -19,7 +17,6 @@ import org.apache.log4j.Logger;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-// @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
     @Configuration
     @Order(1)
