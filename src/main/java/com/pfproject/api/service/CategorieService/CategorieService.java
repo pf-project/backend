@@ -10,9 +10,9 @@ public interface CategorieService {
 
     // Categorie find(String id);
 
-    // Categorie findByUsername(String userName);
+    Categorie findByDesignation(String designation);
 
-    // List<Categorie> findAll();
+    List<Categorie> findAll();
 
     // Categorie update(String id, Categorie object);
 

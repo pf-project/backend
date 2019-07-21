@@ -1,7 +1,7 @@
-package com.pfproject.api.service.CategorieService;
+package com.pfproject.api.service.ArticleService;
 
-import com.pfproject.api.model.Categorie;
-import com.pfproject.api.repository.CategorieRepository;
+import com.pfproject.api.model.Article;
+import com.pfproject.api.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,20 +9,20 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class BasicCategorieService implements CategorieService {
+public class BasicArticleService implements ArticleService {
 
-    private final CategorieRepository repository;
+    private final ArticleRepository repository;
 
     @Autowired
-    public BasicCategorieService(final CategorieRepository repository) {
+    public BasicArticleService(final ArticleRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public Categorie create(final Categorie categorie) {
-        categorie.setCreatedAt(String.valueOf(LocalDateTime.now()));
+    public Article create(final Article article) {
+        article.setCreatedAt(String.valueOf(LocalDateTime.now()));
 
-        return repository.save(categorie);
+        return repository.save(article);
     }
 
     // @Override
@@ -30,13 +30,13 @@ public class BasicCategorieService implements CategorieService {
     // return repository.findOne(id);
     // }
 
-    @Override
-    public Categorie findByDesignation(final String designation) {
-        return repository.findByDesignation(designation);
-    }
+    // @Override
+    // public Article findByDesignation(final String designation) {
+    // return repository.findByDesignation(designation);
+    // }
 
     @Override
-    public List<Categorie> findAll() {
+    public List<Article> findAll() {
         return repository.findAll();
     }
 

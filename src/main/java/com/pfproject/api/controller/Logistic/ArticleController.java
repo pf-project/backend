@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.CategorieDTO;
-import com.pfproject.api.service.CategorieService.CategorieService;
+import com.pfproject.api.dto.ArticleDTO;
+import com.pfproject.api.service.ArticleService.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,55 +15,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-import com.pfproject.api.model.Categorie;
+import com.pfproject.api.model.Article;
 
 import org.apache.log4j.Logger;
 
 @RestController
-@RequestMapping(value = "/api/logistic/categorie")
+@RequestMapping(value = "/api/logistic/article")
 
-public class CategorieController {
+public class ArticleController {
 
-    private final CategorieService service;
+    private final ArticleService service;
 
     private final ConverterFacade converterFacade;
 
     static Logger log = Logger.getLogger(CategorieController.class.getName());
 
     @Autowired
-    public CategorieController(final CategorieService service, final ConverterFacade converterFacade) {
+    public ArticleController(final ArticleService service, final ConverterFacade converterFacade) {
         this.service = service;
         this.converterFacade = converterFacade;
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final CategorieDTO dto) {
+    public ResponseEntity<?> create(@RequestBody final ArticleDTO dto) {
 
-        Categorie categorie = service.create(converterFacade.convertCategorie(dto));
+        Article article = service.create(converterFacade.convertArticle(dto));
 
-        return new ResponseEntity<>(categorie, HttpStatus.OK);
+        return new ResponseEntity<>(article, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<Categorie> liste = service.findAll();
-        ArrayList<String> response = new ArrayList<String>();
-        for (Categorie categorie : liste) {
+        List<Article> liste = service.findAll();
 
-            response.add(categorie.getDesignation());
-        }
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
-    @Secured("ROLE_ADMIN")
-    @RequestMapping(value = "/find/{designation}", method = RequestMethod.GET)
-    public ResponseEntity<?> findByDesignation(@PathVariable final String designation) {
-        Categorie categorie = service.findByDesignation(designation);
+    // @Secured("ROLE_ADMIN")
+    // @RequestMapping(value = "/find/{designation}", method = RequestMethod.GET)
+    // public ResponseEntity<?> findByDesignation(@PathVariable final String
+    // designation) {
+    // Article article = service.findByDesignation(designation);
 
-        return new ResponseEntity<>(categorie, HttpStatus.OK);
-    }
+    // return new ResponseEntity<>(article, HttpStatus.OK);
+    // }
 
     // // search route fonctional
     // // @RequestMapping(value = "/find/{username}", method = RequestMethod.GET)
