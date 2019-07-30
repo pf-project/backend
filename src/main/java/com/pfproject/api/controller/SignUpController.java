@@ -46,6 +46,7 @@ public class SignUpController {
         response.setAuthority(user.getAuthority());
         response.setUsername(user.getUsername());
         response.setId(user.getId());
+        response.setEnabled(user.isEnabled());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -131,6 +132,7 @@ public class SignUpController {
         User user = service.find(id);
         response.setMessage("l'utilisateur a été Archivé");
         user.setArchived(true);
+        user.setEnabled(false);
 
         service.update(id, user);
 

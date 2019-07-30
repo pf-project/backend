@@ -17,7 +17,7 @@ public class User extends BaseEntity implements UserDetails {
     private boolean accountNonExpired;
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
-    private boolean isEnabled;
+    private boolean enabled;
     private boolean firstLogin;
     private boolean archived;
 
@@ -74,7 +74,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return this.enabled;
     }
 
     public boolean isFirstLogin() {
@@ -102,7 +102,7 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     public void setEnabled(final boolean enabled) {
-        isEnabled = enabled;
+        this.enabled = enabled;
     }
 
     public void setFirstLogin(final boolean firstLogin) {
