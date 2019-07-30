@@ -55,12 +55,14 @@ public class SignUpController {
         List<User> liste = service.findAll();
         ArrayList<Response> response = new ArrayList<Response>();
         for (User user : liste) {
-            Response r = new Response();
-            r.setAuthority(user.getAuthority());
-            r.setUsername(user.getUsername());
-            r.setId(user.getId());
-            r.setEnabled(user.isEnabled());
-            response.add(r);
+            if (!user.getArchived()) {
+                Response r = new Response();
+                r.setAuthority(user.getAuthority());
+                r.setUsername(user.getUsername());
+                r.setId(user.getId());
+                r.setEnabled(user.isEnabled());
+                response.add(r);
+            }
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -82,7 +84,7 @@ public class SignUpController {
         service.update(id, user);
 
         final MessageDTO response = new MessageDTO();
-        response.setMessage("Mot de passe est changé avec succes");
+        response.setMessage("L'utilisateur a été mis à jour");
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -102,7 +104,7 @@ public class SignUpController {
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/disable/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> delete(@PathVariable final String id) {
+    public ResponseEntity<?> disable(@PathVariable final String id) {
         // service.delete(id);
         final MessageDTO response = new MessageDTO();
 
@@ -115,6 +117,21 @@ public class SignUpController {
             response.setMessage("l'utilisateur a été débloqué");
             user.setEnabled(true);
         }
+        service.update(id, user);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/archive/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> archive(@PathVariable final String id) {
+        // service.delete(id);
+        final MessageDTO response = new MessageDTO();
+
+        User user = service.find(id);
+        response.setMessage("l'utilisateur a été Archivé");
+        user.setArchived(true);
+
         service.update(id, user);
 
         return new ResponseEntity<>(response, HttpStatus.OK);

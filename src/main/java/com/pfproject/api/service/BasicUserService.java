@@ -25,6 +25,7 @@ public class BasicUserService implements UserService {
     public User create(final User user) {
         user.setCreatedAt(String.valueOf(LocalDateTime.now()));
         user.setFirstLogin(true);
+        user.setArchived(false);
         return repository.save(user);
     }
 

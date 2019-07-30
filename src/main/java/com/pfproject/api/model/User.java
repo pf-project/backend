@@ -19,6 +19,15 @@ public class User extends BaseEntity implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean isEnabled;
     private boolean firstLogin;
+    private boolean archived;
+
+    public boolean getArchived() {
+        return this.archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
 
     // this class should override this method
     @Override
