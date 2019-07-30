@@ -7,7 +7,8 @@ import java.util.Map;
 public class Categorie {
 
     private static final long serialVersionUID = 7954225925563724664L;
-    @Id
+
+    @Indexed(unique = true)
     private String code;
 
     @Indexed(unique = true)
