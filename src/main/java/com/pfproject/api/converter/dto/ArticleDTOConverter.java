@@ -28,6 +28,7 @@ public class ArticleDTOConverter implements Converter<ArticleDTO, Article> {
         article.setDimension_H(dto.getDimension_H());
         article.setUnite2(dto.getUnite2());
         article.setGestion_par_lot(dto.getGestion_par_lot());
+        article.setLot_standard(dto.getLot_standard());
         article.setControle_qualite_exige(dto.getControle_qualite_exige());
         article.setPrix_standar_achat(dto.getPrix_standar_achat());
         article.setUnite_de_quantite_achat(dto.getUnite_de_quantite_achat());

@@ -27,6 +27,8 @@ public class Article {
     private String dimension_H;
     private String unite2;
     private boolean gestion_par_lot;
+    private String lot_standard;
+
     private boolean controle_qualite_exige;
     private String prix_standar_achat;
     private String unite_de_quantite_achat;
@@ -36,6 +38,14 @@ public class Article {
     private String prix_de_vente_de_base_TTC;
     private String unite_de_vente;
     private String createdAt;
+
+    public String getLot_standard() {
+        return this.lot_standard;
+    }
+
+    public void setLot_standard(String lot_standard) {
+        this.lot_standard = lot_standard;
+    }
 
     public String getCode() {
         return this.code;
