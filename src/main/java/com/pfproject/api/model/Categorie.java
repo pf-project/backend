@@ -8,7 +8,7 @@ public class Categorie {
 
     private static final long serialVersionUID = 7954225925563724664L;
     @Id
-    private long code;
+    private String code;
 
     @Indexed(unique = true)
     private String designation;
@@ -24,11 +24,11 @@ public class Categorie {
         this.articlesMetaData = articlesMetaData;
     }
 
-    public long getCode() {
+    public String getCode() {
         return this.code;
     }
 
-    public void setCode(long code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

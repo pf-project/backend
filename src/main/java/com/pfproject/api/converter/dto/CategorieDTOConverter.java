@@ -10,7 +10,7 @@ public class CategorieDTOConverter implements Converter<CategorieDTO, Categorie>
     public Categorie convert(final CategorieDTO dto) {
         final Categorie categorie = new Categorie();
 
-        categorie.setCode(Long.parseLong((dto.getCode())));
+        categorie.setCode(dto.getCode());
         categorie.setDesignation(dto.getDesignation());
         categorie.setGroupe(dto.getGroupe());
         categorie.setArticlesMetaData(dto.getArticlesMetaData());
