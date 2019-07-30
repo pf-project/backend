@@ -1,13 +1,16 @@
 package com.pfproject.api.model;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import java.util.List;
 import java.util.Map;
 
 public class Categorie {
 
     private static final long serialVersionUID = 7954225925563724664L;
+    @Id
+    private long code;
 
-    private String code;
+    @Indexed(unique = true)
     private String designation;
     private String groupe;
     private String createdAt;
@@ -21,11 +24,11 @@ public class Categorie {
         this.articlesMetaData = articlesMetaData;
     }
 
-    public String getCode() {
+    public long getCode() {
         return this.code;
     }
 
-    public void setCode(String code) {
+    public void setCode(long code) {
         this.code = code;
     }
 
