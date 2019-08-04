@@ -10,11 +10,13 @@ public interface ArticleService {
 
     // Categorie find(String id);
 
-    // Article findByDesignation(String designation);
+    Article findByDesignation(String designation);
+
+    Article findByCode(String code);
 
     List<Article> findAll();
 
-    // Categorie update(String id, Categorie object);
+    Article update(String code, Article object);
 
     // String delete(String id);
 }

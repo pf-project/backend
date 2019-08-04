@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.ArticleDTO;
+import com.pfproject.api.dto.MessageDTO;
 import com.pfproject.api.service.ArticleService.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.pfproject.api.model.Article;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 
@@ -53,14 +56,65 @@ public class ArticleController {
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
-    // @Secured("ROLE_ADMIN")
-    // @RequestMapping(value = "/find/{designation}", method = RequestMethod.GET)
-    // public ResponseEntity<?> findByDesignation(@PathVariable final String
-    // designation) {
-    // Article article = service.findByDesignation(designation);
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findByDesignation/{designation}", method = RequestMethod.GET)
+    public ResponseEntity<?> findByDesignation(@PathVariable final String designation) {
+        Article article = service.findByDesignation(designation);
 
-    // return new ResponseEntity<>(article, HttpStatus.OK);
-    // }
+        return new ResponseEntity<>(article, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findByCode/{code}", method = RequestMethod.GET)
+    public ResponseEntity<?> findByCode(@PathVariable final String code) {
+        Article article = service.findByCode(code);
+
+        return new ResponseEntity<>(article, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/getCodesAndDesignations", method = RequestMethod.GET)
+    public ResponseEntity<?> getCodesAndDesignations() {
+        List<Article> liste = service.findAll();
+
+        List<String> designations = new ArrayList<String>();
+        for (Article article : liste) {
+            designations.add(article.getDesignation());
+        }
+
+        List<String> codes = new ArrayList<String>();
+        for (Article article : liste) {
+            codes.add(article.getCode());
+        }
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("codes", codes);
+        map.put("designations", designations);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/archive/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> archive(@PathVariable final String code) {
+        Article article = service.findByCode(code);
+
+        article.setArchived(true);
+
+        service.update(code, article);
+        MessageDTO message = new MessageDTO();
+        message.setMessage("Article a été modifié");
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/update/{code}", method = RequestMethod.POST)
+    public ResponseEntity<?> update(@PathVariable final String code, @RequestBody final ArticleDTO dto) {
+
+        Article article = service.update(code, converterFacade.convertArticle(dto));
+
+        return new ResponseEntity<>(article, HttpStatus.OK);
+    }
 
     // // search route fonctional
     // // @RequestMapping(value = "/find/{username}", method = RequestMethod.GET)

@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface ArticleRepository extends MongoRepository<Article, String> {
     Article findByDesignation(final String designation);
+
+    Article findByCode(final String code);
 }

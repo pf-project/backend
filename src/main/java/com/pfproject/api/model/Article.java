@@ -4,9 +4,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.bson.types.ObjectId;
+
 public class Article {
 
     private static final long serialVersionUID = 7954225915563724664L;
+
+    private ObjectId id;
 
     private String code;
     private String designation;
@@ -38,6 +42,33 @@ public class Article {
     private String prix_de_vente_de_base_TTC;
     private String unite_de_vente;
     private String createdAt;
+    private String updatedAt;
+
+    public ObjectId getId() {
+        return this.id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    private boolean archived;
+
+    public boolean getArchived() {
+        return this.archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
 
     public String getLot_standard() {
         return this.lot_standard;

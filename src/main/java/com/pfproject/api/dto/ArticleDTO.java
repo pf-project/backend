@@ -6,9 +6,12 @@ import java.util.Map;
 
 import com.pfproject.api.model.Authority;
 
+import org.bson.types.ObjectId;
+
 public class ArticleDTO implements Serializable {
 
     private static final long serialVersionUID = 91201774547107674L;
+    private ObjectId id;
 
     private String code;
     private String designation;
@@ -40,13 +43,40 @@ public class ArticleDTO implements Serializable {
     private String unite_de_vente;
     private String createdAt;
 
-    public String getLot_standard() {
-		return this.lot_standard;
-	}
+    private boolean archived;
+    private String updatedAt;
 
-	public void setLot_standard(String lot_standard) {
-		this.lot_standard = lot_standard;
-	}
+    public ObjectId getId() {
+        return this.id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public boolean getArchived() {
+        return this.archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+    public String getLot_standard() {
+        return this.lot_standard;
+    }
+
+    public void setLot_standard(String lot_standard) {
+        this.lot_standard = lot_standard;
+    }
 
     public String getCode() {
         return this.code;

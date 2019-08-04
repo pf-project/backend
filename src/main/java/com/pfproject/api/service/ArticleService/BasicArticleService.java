@@ -25,40 +25,30 @@ public class BasicArticleService implements ArticleService {
         return repository.save(article);
     }
 
-    // @Override
-    // public User find(final String id) {
-    // return repository.findOne(id);
-    // }
-
-    // @Override
-    // public Article findByDesignation(final String designation) {
-    // return repository.findByDesignation(designation);
-    // }
-
     @Override
     public List<Article> findAll() {
         return repository.findAll();
     }
 
-    // @Override
-    // public User update(final String id, final User user) {
-    // user.setId(id);
+    public Article findByDesignation(String designation) {
+        return repository.findByDesignation(designation);
+    }
 
-    // final User saved = repository.findOne(id);
+    public Article findByCode(String code) {
+        return repository.findByCode(code);
+    }
 
-    // if (saved != null) {
-    // user.setCreatedAt(saved.getCreatedAt());
-    // user.setUpdatedAt(String.valueOf(LocalDateTime.now()));
-    // } else {
-    // user.setCreatedAt(String.valueOf(LocalDateTime.now()));
-    // }
-    // repository.save(user);
-    // return user;
-    // }
+    @Override
+    public Article update(final String code, final Article article) {
 
-    // @Override
-    // public String delete(final String id) {
-    // repository.delete(id);
-    // return id;
-    // }
+        final Article saved = repository.findByCode(code);
+        article.setId(saved.getId());
+
+        article.setCreatedAt(saved.getCreatedAt());
+        article.setUpdatedAt(String.valueOf(LocalDateTime.now()));
+
+        repository.save(article);
+        return article;
+    }
+
 }
