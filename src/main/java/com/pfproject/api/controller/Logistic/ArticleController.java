@@ -68,7 +68,7 @@ public class ArticleController {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("article" ,article);
         map.put("articlesMetaData" , categorie.getArticlesMetaData()) ;
-
+        log.info(mapg);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
