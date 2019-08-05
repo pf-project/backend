@@ -57,7 +57,14 @@ public class ArticleController {
     public ResponseEntity<?> find() {
         List<Article> liste = service.findAll();
 
-        return new ResponseEntity<>(liste, HttpStatus.OK);
+        List<Article> response = new ArrayList<Article>();
+        for (Article article : liste) {
+            if (!article.getArchived()) {
+                response.add(article);
+            }
+        }
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
@@ -66,7 +73,8 @@ public class ArticleController {
         Article article = service.findByDesignation(designation);
         Categorie categorie = C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("article", article);
+        if (!article.getArchived())
+            map.put("article", article);
         map.put("categorie", categorie);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -76,9 +84,10 @@ public class ArticleController {
     @RequestMapping(value = "/findByCode/{code}", method = RequestMethod.GET)
     public ResponseEntity<?> findByCode(@PathVariable final String code) {
         Article article = service.findByCode(code);
-        Categorie categorie = C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("article", article);
+        if (!article.getArchived())
+            map.put("article", article);
+        Categorie categorie = C_service.findByDesignation(article.getCategorie());
         map.put("categorie", categorie);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -91,12 +100,14 @@ public class ArticleController {
 
         List<String> designations = new ArrayList<String>();
         for (Article article : liste) {
-            designations.add(article.getDesignation());
+            if (!article.getArchived())
+                designations.add(article.getDesignation());
         }
 
         List<String> codes = new ArrayList<String>();
         for (Article article : liste) {
-            codes.add(article.getCode());
+            if (!article.getArchived())
+                codes.add(article.getCode());
         }
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -115,7 +126,7 @@ public class ArticleController {
 
         service.update(code, article);
         MessageDTO message = new MessageDTO();
-        message.setMessage("Article a été modifié");
+        message.setMessage("Article a été supprimé");
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
