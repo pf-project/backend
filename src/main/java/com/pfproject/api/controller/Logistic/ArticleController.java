@@ -67,7 +67,8 @@ public class ArticleController {
         Categorie categorie =  C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("article" ,article);
-        //map.put("articlesMetaData" , categorie.getArticlesMetaData()) ;
+        List<Map<String, Object>>  ArticlesMetaData = categorie.getArticlesMetaData();
+        map.put("articlesMetaData" , ArticlesMetaData) ;
         log.info(map);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
