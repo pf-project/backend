@@ -30,15 +30,16 @@ import org.apache.log4j.Logger;
 public class ArticleController {
 
     private final ArticleService service;
-    private final CategorieService C_service ;
+    private final CategorieService C_service;
     private final ConverterFacade converterFacade;
 
     static Logger log = Logger.getLogger(CategorieController.class.getName());
 
     @Autowired
-    public ArticleController(final ArticleService service,final CategorieService C_service, final ConverterFacade converterFacade) {
+    public ArticleController(final ArticleService service, final CategorieService C_service,
+            final ConverterFacade converterFacade) {
         this.service = service;
-        this.C_service =  C_service ;
+        this.C_service = C_service;
         this.converterFacade = converterFacade;
     }
 
@@ -64,12 +65,13 @@ public class ArticleController {
     public ResponseEntity<?> findByDesignation(@PathVariable final String designation) {
         Article article = service.findByDesignation(designation);
 
-        Categorie categorie =  C_service.findByDesignation(article.getCategorie());
+        Categorie categorie = C_service.findByDesignation(article.getCategorie());
+        log.info(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("article" ,article);
-        List<Map<String, Object>>  ArticlesMetaData = categorie.getArticlesMetaData();
-        map.put("articlesMetaData" , ArticlesMetaData) ;
-        log.info(map);
+        map.put("article", article);
+        // List<Map<String, Object>> ArticlesMetaData = categorie.getArticlesMetaData();
+        map.put("categorie", categorie);
+        // log.info(map);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
@@ -78,11 +80,10 @@ public class ArticleController {
     @RequestMapping(value = "/findByCode/{code}", method = RequestMethod.GET)
     public ResponseEntity<?> findByCode(@PathVariable final String code) {
         Article article = service.findByCode(code);
-        Categorie categorie =  C_service.findByDesignation(article.getCategorie());
+        Categorie categorie = C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("article" ,article);
-        map.put("articlesMetaData" , categorie.getArticlesMetaData()) ;
-
+        map.put("article", article);
+        map.put("articlesMetaData", categorie.getArticlesMetaData());
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
