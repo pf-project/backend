@@ -7,6 +7,7 @@ import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.ArticleDTO;
 import com.pfproject.api.dto.MessageDTO;
 import com.pfproject.api.service.ArticleService.ArticleService;
+import com.pfproject.api.service.CategorieService.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.pfproject.api.model.Article;
+import com.pfproject.api.model.Categorie;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -28,14 +30,15 @@ import org.apache.log4j.Logger;
 public class ArticleController {
 
     private final ArticleService service;
-
+    private final CategorieService C_service ;
     private final ConverterFacade converterFacade;
 
     static Logger log = Logger.getLogger(CategorieController.class.getName());
 
     @Autowired
-    public ArticleController(final ArticleService service, final ConverterFacade converterFacade) {
+    public ArticleController(final ArticleService service,final CategorieService C_service, final ConverterFacade converterFacade) {
         this.service = service;
+        this.C_service =  C_service ;
         this.converterFacade = converterFacade;
     }
 
@@ -68,8 +71,12 @@ public class ArticleController {
     @RequestMapping(value = "/findByCode/{code}", method = RequestMethod.GET)
     public ResponseEntity<?> findByCode(@PathVariable final String code) {
         Article article = service.findByCode(code);
+        Categorie categorie =  C_service.findByDesignation(article.getCategorie());
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("article" ,article);
+        map.put("articlesMetaData" , categorie.getArticlesMetaData()) ;
 
-        return new ResponseEntity<>(article, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
