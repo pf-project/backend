@@ -80,10 +80,12 @@ public class ArticleController {
     @RequestMapping(value = "/findByCode/{code}", method = RequestMethod.GET)
     public ResponseEntity<?> findByCode(@PathVariable final String code) {
         Article article = service.findByCode(code);
-        Categorie categorie = C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("article", article);
-        map.put("articlesMetaData", categorie.getArticlesMetaData());
+        // List<Map<String, Object>> ArticlesMetaData = categorie.getArticlesMetaData();
+        Categorie categorie = C_service.findByDesignation(article.getCategorie());
+        map.put("categorie", categorie);
+        // log.info(map);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
