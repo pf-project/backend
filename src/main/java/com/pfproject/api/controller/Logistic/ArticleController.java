@@ -76,6 +76,7 @@ public class ArticleController {
         map.put("article" ,article);
         map.put("articlesMetaData" , categorie.getArticlesMetaData()) ;
 
+
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
