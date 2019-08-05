@@ -64,13 +64,13 @@ public class ArticleController {
     public ResponseEntity<?> findByDesignation(@PathVariable final String designation) {
         Article article = service.findByDesignation(designation);
 
-        Categorie categorie =  C_service.findByDesignation(article.getCategorie());
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("article" ,article);
-        map.put("articlesMetaData" , categorie.getArticlesMetaData()) ;
-        log.info(map);
+       // Categorie categorie =  C_service.findByDesignation(article.getCategorie());
+        //Map<String, Object> map = new HashMap<String, Object>();
+        //map.put("article" ,article);
+        //map.put("artic lesMetaData" , categorie.getArticlesMetaData()) ;
+        //log.info(map);
 
-        return new ResponseEntity<>(map, HttpStatus.OK);
+        return new ResponseEntity<>(article, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
