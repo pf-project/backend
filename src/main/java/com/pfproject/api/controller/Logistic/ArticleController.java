@@ -65,12 +65,12 @@ public class ArticleController {
         Article article = service.findByDesignation(designation);
 
        // Categorie categorie =  C_service.findByDesignation(article.getCategorie());
-        //Map<String, Object> map = new HashMap<String, Object>();
-        //map.put("article" ,article);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("article" ,article);
         //map.put("artic lesMetaData" , categorie.getArticlesMetaData()) ;
-        //log.info(map);
+        log.info(map);
 
-        return new ResponseEntity<>(article, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
