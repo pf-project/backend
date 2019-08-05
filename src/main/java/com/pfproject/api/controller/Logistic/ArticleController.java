@@ -64,14 +64,10 @@ public class ArticleController {
     @RequestMapping(value = "/findByDesignation/{designation}", method = RequestMethod.GET)
     public ResponseEntity<?> findByDesignation(@PathVariable final String designation) {
         Article article = service.findByDesignation(designation);
-
         Categorie categorie = C_service.findByDesignation(article.getCategorie());
-        log.info(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("article", article);
-        // List<Map<String, Object>> ArticlesMetaData = categorie.getArticlesMetaData();
         map.put("categorie", categorie);
-        // log.info(map);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
@@ -83,7 +79,7 @@ public class ArticleController {
         Categorie categorie = C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("article", article);
-        map.put("articlesMetaData", categorie.getArticlesMetaData());
+        map.put("categorie", categorie);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
