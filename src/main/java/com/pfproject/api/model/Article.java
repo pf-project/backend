@@ -25,61 +25,64 @@ public class Article {
     private String unite_de_quantite_de_base;
     private String emplacement;
     private String poids;
-    private String unite1;
+    private String unite_poid;
     private String dimension_L;
     private String dimension_I;
     private String dimension_H;
-    private String unite2;
+    private String unite_dim;
     private boolean gestion_par_lot;
     private String lot_standard;
 
     private boolean controle_qualite_exige;
-    private String prix_standar_achat;
-    private String unite_de_quantite_achat;
-    private String prix_moyen_pendere;
-    private String prix_de_vente_de_base_HT;
-    private String taux_tva;
-    private String prix_de_vente_de_base_TTC;
-    private String unite_de_vente;
-    private String createdAt;
-    private String updatedAt;
 
-    public ObjectId getId() {
-        return this.id;
-    }
+    private String prix_achat_HT;
+    private  String devise_achat ;
+    private String unite_achat ;
+    private String taux_tva_achat ;
+    private String prix_achat_TTC ;
+    private String prix_moyen_pendere ;
+    private boolean marge ;
+    private String taux_marge ;
+    private String montant_marge ;
+    private String prix_vente_HT;
+    private String devise_vente;
+    private String unite_vente;
+    private String taux_tva_vente ;
+    private String prix_vente_TTC ;
 
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
-    public String getUpdatedAt() {
-        return this.updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
     private boolean archived;
 
-    public boolean getArchived() {
-        return this.archived;
+
+
+    private String createdAt;
+    private String updatedAt;
+
+    public Article() {
+
+    }
+    public boolean isArchived() {
+        return archived;
     }
 
     public void setArchived(boolean archived) {
         this.archived = archived;
     }
 
-    public String getLot_standard() {
-        return this.lot_standard;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setLot_standard(String lot_standard) {
-        this.lot_standard = lot_standard;
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getCode() {
-        return this.code;
+        return code;
     }
 
     public void setCode(String code) {
@@ -87,7 +90,7 @@ public class Article {
     }
 
     public String getDesignation() {
-        return this.designation;
+        return designation;
     }
 
     public void setDesignation(String designation) {
@@ -95,7 +98,7 @@ public class Article {
     }
 
     public String getCategorie() {
-        return this.categorie;
+        return categorie;
     }
 
     public void setCategorie(String categorie) {
@@ -103,7 +106,7 @@ public class Article {
     }
 
     public String getUtilite() {
-        return this.utilite;
+        return utilite;
     }
 
     public void setUtilite(String utilite) {
@@ -111,7 +114,7 @@ public class Article {
     }
 
     public String getFindvalidite() {
-        return this.findvalidite;
+        return findvalidite;
     }
 
     public void setFindvalidite(String findvalidite) {
@@ -119,7 +122,7 @@ public class Article {
     }
 
     public String getAncienCode() {
-        return this.ancienCode;
+        return ancienCode;
     }
 
     public void setAncienCode(String ancienCode) {
@@ -127,7 +130,7 @@ public class Article {
     }
 
     public String getFabriquant() {
-        return this.fabriquant;
+        return fabriquant;
     }
 
     public void setFabriquant(String fabriquant) {
@@ -135,7 +138,7 @@ public class Article {
     }
 
     public String getNote() {
-        return this.note;
+        return note;
     }
 
     public void setNote(String note) {
@@ -143,7 +146,7 @@ public class Article {
     }
 
     public String getNum_piece_fabriquuant() {
-        return this.num_piece_fabriquuant;
+        return num_piece_fabriquuant;
     }
 
     public void setNum_piece_fabriquuant(String num_piece_fabriquuant) {
@@ -151,7 +154,7 @@ public class Article {
     }
 
     public List<Map<String, String>> getCaracteristiques() {
-        return this.caracteristiques;
+        return caracteristiques;
     }
 
     public void setCaracteristiques(List<Map<String, String>> caracteristiques) {
@@ -159,7 +162,7 @@ public class Article {
     }
 
     public String getUnite_de_quantite_de_base() {
-        return this.unite_de_quantite_de_base;
+        return unite_de_quantite_de_base;
     }
 
     public void setUnite_de_quantite_de_base(String unite_de_quantite_de_base) {
@@ -167,7 +170,7 @@ public class Article {
     }
 
     public String getEmplacement() {
-        return this.emplacement;
+        return emplacement;
     }
 
     public void setEmplacement(String emplacement) {
@@ -175,23 +178,23 @@ public class Article {
     }
 
     public String getPoids() {
-        return this.poids;
+        return poids;
     }
 
     public void setPoids(String poids) {
         this.poids = poids;
     }
 
-    public String getUnite1() {
-        return this.unite1;
+    public String getUnite_poid() {
+        return unite_poid;
     }
 
-    public void setUnite1(String unite1) {
-        this.unite1 = unite1;
+    public void setUnite_poid(String unite_poid) {
+        this.unite_poid = unite_poid;
     }
 
     public String getDimension_L() {
-        return this.dimension_L;
+        return dimension_L;
     }
 
     public void setDimension_L(String dimension_L) {
@@ -199,7 +202,7 @@ public class Article {
     }
 
     public String getDimension_I() {
-        return this.dimension_I;
+        return dimension_I;
     }
 
     public void setDimension_I(String dimension_I) {
@@ -207,99 +210,170 @@ public class Article {
     }
 
     public String getDimension_H() {
-        return this.dimension_H;
+        return dimension_H;
     }
 
     public void setDimension_H(String dimension_H) {
         this.dimension_H = dimension_H;
     }
 
-    public String getUnite2() {
-        return this.unite2;
+    public String getUnite_dim() {
+        return unite_dim;
     }
 
-    public void setUnite2(String unite2) {
-        this.unite2 = unite2;
+    public void setUnite_dim(String unite_dim) {
+        this.unite_dim = unite_dim;
     }
 
-    public boolean getGestion_par_lot() {
-        return this.gestion_par_lot;
+    public boolean isGestion_par_lot() {
+        return gestion_par_lot;
     }
 
     public void setGestion_par_lot(boolean gestion_par_lot) {
         this.gestion_par_lot = gestion_par_lot;
     }
 
-    public boolean getControle_qualite_exige() {
-        return this.controle_qualite_exige;
+    public String getLot_standard() {
+        return lot_standard;
+    }
+
+    public void setLot_standard(String lot_standard) {
+        this.lot_standard = lot_standard;
+    }
+
+    public boolean isControle_qualite_exige() {
+        return controle_qualite_exige;
     }
 
     public void setControle_qualite_exige(boolean controle_qualite_exige) {
         this.controle_qualite_exige = controle_qualite_exige;
     }
 
-    public String getPrix_standar_achat() {
-        return this.prix_standar_achat;
+    public String getPrix_achat_HT() {
+        return prix_achat_HT;
     }
 
-    public void setPrix_standar_achat(String prix_standar_achat) {
-        this.prix_standar_achat = prix_standar_achat;
+    public void setPrix_achat_HT(String prix_achat_HT) {
+        this.prix_achat_HT = prix_achat_HT;
     }
 
-    public String getUnite_de_quantite_achat() {
-        return this.unite_de_quantite_achat;
+    public String getDevise_achat() {
+        return devise_achat;
     }
 
-    public void setUnite_de_quantite_achat(String unite_de_quantite_achat) {
-        this.unite_de_quantite_achat = unite_de_quantite_achat;
+    public void setDevise_achat(String devise_achat) {
+        this.devise_achat = devise_achat;
+    }
+
+    public String getUnite_achat() {
+        return unite_achat;
+    }
+
+    public void setUnite_achat(String unite_achat) {
+        this.unite_achat = unite_achat;
+    }
+
+    public String getTaux_tva_achat() {
+        return taux_tva_achat;
+    }
+
+    public void setTaux_tva_achat(String taux_tva_achat) {
+        this.taux_tva_achat = taux_tva_achat;
+    }
+
+    public String getPrix_achat_TTC() {
+        return prix_achat_TTC;
+    }
+
+    public void setPrix_achat_TTC(String prix_achat_TTC) {
+        this.prix_achat_TTC = prix_achat_TTC;
     }
 
     public String getPrix_moyen_pendere() {
-        return this.prix_moyen_pendere;
+        return prix_moyen_pendere;
     }
 
     public void setPrix_moyen_pendere(String prix_moyen_pendere) {
         this.prix_moyen_pendere = prix_moyen_pendere;
     }
 
-    public String getPrix_de_vente_de_base_HT() {
-        return this.prix_de_vente_de_base_HT;
+    public boolean isMarge() {
+        return marge;
     }
 
-    public void setPrix_de_vente_de_base_HT(String prix_de_vente_de_base_HT) {
-        this.prix_de_vente_de_base_HT = prix_de_vente_de_base_HT;
+    public void setMarge(boolean marge) {
+        this.marge = marge;
     }
 
-    public String getTaux_tva() {
-        return this.taux_tva;
+    public String getTaux_marge() {
+        return taux_marge;
     }
 
-    public void setTaux_tva(String taux_tva) {
-        this.taux_tva = taux_tva;
+    public void setTaux_marge(String taux_marge) {
+        this.taux_marge = taux_marge;
     }
 
-    public String getPrix_de_vente_de_base_TTC() {
-        return this.prix_de_vente_de_base_TTC;
+    public String getMontant_marge() {
+        return montant_marge;
     }
 
-    public void setPrix_de_vente_de_base_TTC(String prix_de_vente_de_base_TTC) {
-        this.prix_de_vente_de_base_TTC = prix_de_vente_de_base_TTC;
+    public void setMontant_marge(String montant_marge) {
+        this.montant_marge = montant_marge;
     }
 
-    public String getUnite_de_vente() {
-        return this.unite_de_vente;
+    public String getPrix_vente_HT() {
+        return prix_vente_HT;
     }
 
-    public void setUnite_de_vente(String unite_de_vente) {
-        this.unite_de_vente = unite_de_vente;
+    public void setPrix_vente_HT(String prix_vente_HT) {
+        this.prix_vente_HT = prix_vente_HT;
+    }
+
+    public String getDevise_vente() {
+        return devise_vente;
+    }
+
+    public void setDevise_vente(String devise_vente) {
+        this.devise_vente = devise_vente;
+    }
+
+    public String getUnite_vente() {
+        return unite_vente;
+    }
+
+    public void setUnite_vente(String unite_vente) {
+        this.unite_vente = unite_vente;
+    }
+
+    public String getTaux_tva_vente() {
+        return taux_tva_vente;
+    }
+
+    public void setTaux_tva_vente(String taux_tva_vente) {
+        this.taux_tva_vente = taux_tva_vente;
+    }
+
+    public String getPrix_vente_TTC() {
+        return prix_vente_TTC;
+    }
+
+    public void setPrix_vente_TTC(String prix_vente_TTC) {
+        this.prix_vente_TTC = prix_vente_TTC;
     }
 
     public String getCreatedAt() {
-        return this.createdAt;
+        return createdAt;
     }
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

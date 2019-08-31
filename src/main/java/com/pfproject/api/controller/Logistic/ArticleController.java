@@ -59,7 +59,7 @@ public class ArticleController {
 
         List<Article> response = new ArrayList<Article>();
         for (Article article : liste) {
-            if (!article.getArchived()) {
+            if (!article.isArchived()) {
                 response.add(article);
             }
         }
@@ -73,7 +73,7 @@ public class ArticleController {
         Article article = service.findByDesignation(designation);
         Categorie categorie = C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
-        if (!article.getArchived())
+        if (!article.isArchived())
             map.put("article", article);
         map.put("categorie", categorie);
 
@@ -85,7 +85,7 @@ public class ArticleController {
     public ResponseEntity<?> findByCode(@PathVariable final String code) {
         Article article = service.findByCode(code);
         Map<String, Object> map = new HashMap<String, Object>();
-        if (!article.getArchived())
+        if (!article.isArchived())
             map.put("article", article);
         Categorie categorie = C_service.findByDesignation(article.getCategorie());
         map.put("categorie", categorie);
@@ -100,13 +100,13 @@ public class ArticleController {
 
         List<String> designations = new ArrayList<String>();
         for (Article article : liste) {
-            if (!article.getArchived())
+            if (!article.isArchived())
                 designations.add(article.getDesignation());
         }
 
         List<String> codes = new ArrayList<String>();
         for (Article article : liste) {
-            if (!article.getArchived())
+            if (!article.isArchived())
                 codes.add(article.getCode());
         }
 
