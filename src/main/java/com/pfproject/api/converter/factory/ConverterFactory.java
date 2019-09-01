@@ -1,11 +1,16 @@
 package com.pfproject.api.converter.factory;
 
 import com.pfproject.api.converter.dto.UserDTOConverter;
-import com.pfproject.api.converter.dto.CategorieDTOConverter;
-import com.pfproject.api.converter.dto.ArticleDTOConverter;
+import com.pfproject.api.converter.dto.parametrage.categorie.CategorieArticleDTOConverter;
+import com.pfproject.api.converter.dto.parametrage.categorie.CategorieServiceDTOConverter;
+import com.pfproject.api.converter.dto.donneedebase.ArticleDTOConverter;
+import com.pfproject.api.converter.dto.donneedebase.ServiceDTOConverter;
 import com.pfproject.api.dto.UserDTO;
-import com.pfproject.api.dto.CategorieDTO;
-import com.pfproject.api.dto.ArticleDTO;
+import com.pfproject.api.dto.parametrage.categorie.CategorieArticleDTO;
+import com.pfproject.api.dto.parametrage.categorie.CategorieServiceDTO;
+import com.pfproject.api.dto.donneedebase.ArticleDTO;
+import com.pfproject.api.dto.donneedebase.ServiceDTO;
+
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +31,9 @@ public class ConverterFactory {
     public void init() {
         converters = new HashMap<>();
         converters.put(UserDTO.class, new UserDTOConverter());
-        converters.put(CategorieDTO.class, new CategorieDTOConverter());
+        converters.put(CategorieServiceDTO.class, new CategorieServiceDTOConverter());
+        converters.put(ServiceDTO.class, new ServiceDTOConverter());
+        converters.put(CategorieArticleDTO.class, new CategorieArticleDTOConverter());
         converters.put(ArticleDTO.class, new ArticleDTOConverter());
     }
 

@@ -2,11 +2,16 @@ package com.pfproject.api.converter;
 
 import com.pfproject.api.converter.factory.ConverterFactory;
 import com.pfproject.api.dto.UserDTO;
-import com.pfproject.api.dto.CategorieDTO;
+import com.pfproject.api.dto.parametrage.categorie.CategorieArticleDTO;
+import com.pfproject.api.dto.parametrage.categorie.CategorieServiceDTO;
 import com.pfproject.api.model.User;
-import com.pfproject.api.dto.ArticleDTO;
-import com.pfproject.api.model.Article;
-import com.pfproject.api.model.Categorie;
+import com.pfproject.api.dto.donneedebase.ArticleDTO;
+import com.pfproject.api.dto.donneedebase.ServiceDTO;
+import com.pfproject.api.model.donneedebase.Article;
+import com.pfproject.api.model.donneedebase.Service;
+import com.pfproject.api.model.parametrage.categorie.CategorieArticle;
+import com.pfproject.api.model.parametrage.categorie.CategorieService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,13 +26,24 @@ public class ConverterFacade {
         return (User) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 
-    public Categorie convertCategorie(final CategorieDTO dto) {
+    public CategorieArticle convertCategorieArticle(final CategorieArticleDTO dto) {
 
-        return (Categorie) converterFactory.getConverter(dto.getClass()).convert(dto);
+        return (CategorieArticle) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 
     public Article convertArticle(final ArticleDTO dto) {
 
         return (Article) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
+
+    public CategorieService convertCategorieService(final CategorieServiceDTO dto) {
+
+        return (CategorieService) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+
+    public Service convertService(final ServiceDTO dto) {
+
+        return (Service) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+
 }

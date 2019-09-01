@@ -1,6 +1,6 @@
-package com.pfproject.api.service.ArticleService;
+package com.pfproject.api.service.donneedebase.ArticleService;
 
-import com.pfproject.api.model.Article;
+import com.pfproject.api.model.donneedebase.Article;
 
 import java.util.List;
 

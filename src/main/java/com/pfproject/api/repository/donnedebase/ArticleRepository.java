@@ -1,6 +1,6 @@
-package com.pfproject.api.repository;
+package com.pfproject.api.repository.donnedebase;
 
-import com.pfproject.api.model.Article;
+import com.pfproject.api.model.donneedebase.Article;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

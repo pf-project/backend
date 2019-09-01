@@ -1,10 +1,11 @@
-package com.pfproject.api.model;
+package com.pfproject.api.model.parametrage.categorie;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import java.util.List;
 import java.util.Map;
 
-public class Categorie {
+public class CategorieArticle {
 
     private static final long serialVersionUID = 7954225925563724664L;
 

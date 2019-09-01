@@ -1,4 +1,4 @@
-package com.pfproject.api.dto;
+package com.pfproject.api.dto.parametrage.categorie;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.pfproject.api.model.Authority;
 
-public class CategorieDTO implements Serializable {
+public class CategorieServiceDTO implements Serializable {
 
     private static final long serialVersionUID = 91201774547107674L;
     private String code;
@@ -15,7 +15,7 @@ public class CategorieDTO implements Serializable {
     private String createdAt;
     private List<Map<String, Object>> articlesMetaData;
 
-    public CategorieDTO() {
+    public CategorieServiceDTO() {
     }
 
     public List<Map<String, Object>> getArticlesMetaData() {

@@ -1,4 +1,4 @@
-package com.pfproject.api.dto;
+package com.pfproject.api.dto.donneedebase;
 
 import java.io.Serializable;
 import java.util.List;
@@ -35,25 +35,23 @@ public class ArticleDTO implements Serializable {
     private String lot_standard;
     private boolean controle_qualite_exige;
     private String prix_achat_HT;
-    private  String devise_achat ;
-    private String unite_achat ;
-    private String taux_tva_achat ;
-    private String prix_achat_TTC ;
-    private String prix_moyen_pendere ;
-    private boolean marge ;
-    private String taux_marge ;
-    private String montant_marge ;
+    private String devise_achat;
+    private String unite_achat;
+    private String taux_tva_achat;
+    private String prix_achat_TTC;
+    private String prix_moyen_pendere;
+    private boolean marge;
+    private String taux_marge;
+    private String montant_marge;
     private String prix_vente_HT;
     private String devise_vente;
     private String unite_vente;
-    private String taux_tva_vente ;
-    private String prix_vente_TTC ;
+    private String taux_tva_vente;
+    private String prix_vente_TTC;
     private String createdAt;
 
     private boolean archived;
     private String updatedAt;
-
-
 
     public ArticleDTO() {
     }
