@@ -41,7 +41,7 @@ public class Article {
     private String taux_tva_achat;
     private String prix_achat_TTC;
     private String prix_moyen_pendere;
-    private boolean marge;
+    private Boolean marge;
     private String taux_marge;
     private String montant_marge;
     private String prix_vente_HT;
@@ -295,11 +295,11 @@ public class Article {
         this.prix_moyen_pendere = prix_moyen_pendere;
     }
 
-    public boolean isMarge() {
+    public Boolean getMarge() {
         return marge;
     }
 
-    public void setMarge(boolean marge) {
+    public void setMarge(Boolean marge) {
         this.marge = marge;
     }
 
