@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.parametrage.configurationdebase.ListesDeBaseDTO;
-import com.pfproject.api.model.parametrage.configurationdebase.ListesDeBase;
-import com.pfproject.api.service.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
+import com.pfproject.api.dto.parametrage.configurationdebase.CoursDeChangesDTO;
+import com.pfproject.api.model.parametrage.configurationdebase.CoursDeChanges;
+import com.pfproject.api.model.parametrage.configurationdebase.Unites;
+import com.pfproject.api.service.parametrage.configurationdebase.coursdechanges.CoursDeChangesService;
+import com.pfproject.api.service.parametrage.configurationdebase.unites.UnitesService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,48 +22,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/logistic/configurationdebase/listesdebase")
+@RequestMapping(value = "/api/logistic/configurationdebase/coursdechange")
 
-public class ListesDeBaseController {
+public class CoursDeChangesController {
 
-    private final ListesDeBaseService service;
+    private final CoursDeChangesService service;
+    private final UnitesService serviceUnites;
 
     private final ConverterFacade converterFacade;
 
     static Logger log = Logger.getLogger(ListesDeBaseController.class.getName());
 
     @Autowired
-    public ListesDeBaseController(final ListesDeBaseService service, final ConverterFacade converterFacade) {
+    public CoursDeChangesController(final CoursDeChangesService service, final ConverterFacade converterFacade,
+            final UnitesService serviceUnites) {
         this.service = service;
+        this.serviceUnites = serviceUnites;
         this.converterFacade = converterFacade;
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final ListesDeBaseDTO dto) {
-        log.info("1");
-        ListesDeBase listesDeBaseConverted = converterFacade.convertListesDeBase(dto);
-        log.info("2");
-        ListesDeBase listesDeBase = service.create(listesDeBaseConverted);
-        log.info("3");
-        return new ResponseEntity<>(listesDeBase, HttpStatus.OK);
+    public ResponseEntity<?> create(@RequestBody final CoursDeChangesDTO dto) {
+
+        CoursDeChanges unites = service.create(converterFacade.convertCoursDeChanges(dto));
+
+        return new ResponseEntity<>(unites, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<ListesDeBase> liste = service.findAll();
+        List<CoursDeChanges> liste = service.findAll();
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final ListesDeBaseDTO dto) {
+    public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final CoursDeChangesDTO dto) {
 
-        ListesDeBase listesDeBase = service.update(id, converterFacade.convertListesDeBase(dto));
+        CoursDeChanges unites = service.update(id, converterFacade.convertCoursDeChanges(dto));
 
-        return new ResponseEntity<>(listesDeBase, HttpStatus.OK);
+        return new ResponseEntity<>(unites, HttpStatus.OK);
     }
 
 }

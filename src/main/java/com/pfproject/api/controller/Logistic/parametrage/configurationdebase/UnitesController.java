@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.parametrage.configurationdebase.ListesDeBaseDTO;
-import com.pfproject.api.model.parametrage.configurationdebase.ListesDeBase;
-import com.pfproject.api.service.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
+import com.pfproject.api.dto.parametrage.configurationdebase.UnitesDTO;
+import com.pfproject.api.model.parametrage.configurationdebase.Unites;
+import com.pfproject.api.service.parametrage.configurationdebase.unites.UnitesService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,48 +20,46 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/logistic/configurationdebase/listesdebase")
+@RequestMapping(value = "/api/logistic/configurationdebase/unites")
 
-public class ListesDeBaseController {
+public class UnitesController {
 
-    private final ListesDeBaseService service;
+    private final UnitesService service;
 
     private final ConverterFacade converterFacade;
 
     static Logger log = Logger.getLogger(ListesDeBaseController.class.getName());
 
     @Autowired
-    public ListesDeBaseController(final ListesDeBaseService service, final ConverterFacade converterFacade) {
+    public UnitesController(final UnitesService service, final ConverterFacade converterFacade) {
         this.service = service;
         this.converterFacade = converterFacade;
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final ListesDeBaseDTO dto) {
-        log.info("1");
-        ListesDeBase listesDeBaseConverted = converterFacade.convertListesDeBase(dto);
-        log.info("2");
-        ListesDeBase listesDeBase = service.create(listesDeBaseConverted);
-        log.info("3");
-        return new ResponseEntity<>(listesDeBase, HttpStatus.OK);
+    public ResponseEntity<?> create(@RequestBody final UnitesDTO dto) {
+
+        Unites unites = service.create(converterFacade.convertUnites(dto));
+
+        return new ResponseEntity<>(unites, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
-        List<ListesDeBase> liste = service.findAll();
+        List<Unites> liste = service.findAll();
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final ListesDeBaseDTO dto) {
+    public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final UnitesDTO dto) {
 
-        ListesDeBase listesDeBase = service.update(id, converterFacade.convertListesDeBase(dto));
+        Unites unites = service.update(id, converterFacade.convertUnites(dto));
 
-        return new ResponseEntity<>(listesDeBase, HttpStatus.OK);
+        return new ResponseEntity<>(unites, HttpStatus.OK);
     }
 
 }

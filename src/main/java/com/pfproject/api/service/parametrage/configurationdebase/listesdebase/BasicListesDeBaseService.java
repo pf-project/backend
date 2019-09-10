@@ -1,4 +1,4 @@
-package com.pfproject.api.service.parametrage.configurationdebase;
+package com.pfproject.api.service.parametrage.configurationdebase.listesdebase;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
