@@ -2,6 +2,7 @@ package com.pfproject.api.converter;
 
 import com.pfproject.api.converter.factory.ConverterFactory;
 import com.pfproject.api.dto.UserDTO;
+import com.pfproject.api.dto.donneedebase.FournisseurDTO;
 import com.pfproject.api.dto.parametrage.categorie.CategorieArticleDTO;
 import com.pfproject.api.dto.parametrage.categorie.CategorieServiceDTO;
 import com.pfproject.api.dto.parametrage.configurationdebase.CoursDeChangesDTO;
@@ -11,6 +12,7 @@ import com.pfproject.api.model.User;
 import com.pfproject.api.dto.donneedebase.ArticleDTO;
 import com.pfproject.api.dto.donneedebase.ServiceDTO;
 import com.pfproject.api.model.donneedebase.Article;
+import com.pfproject.api.model.donneedebase.Fournisseur;
 import com.pfproject.api.model.donneedebase.Service;
 import com.pfproject.api.model.parametrage.categorie.CategorieArticle;
 import com.pfproject.api.model.parametrage.categorie.CategorieService;
@@ -50,6 +52,10 @@ public class ConverterFacade {
     public Service convertService(final ServiceDTO dto) {
 
         return (Service) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+    public Fournisseur convertFournisseur(final FournisseurDTO dto) {
+
+        return (Fournisseur) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 
     public ListesDeBase convertListesDeBase(final ListesDeBaseDTO dto) {

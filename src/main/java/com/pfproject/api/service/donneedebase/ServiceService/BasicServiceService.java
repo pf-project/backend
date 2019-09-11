@@ -19,10 +19,10 @@ public class BasicServiceService implements ServiceService {
 
     @Override
     public com.pfproject.api.model.donneedebase.Service create(
-            final com.pfproject.api.model.donneedebase.Service article) {
-        article.setCreatedAt(String.valueOf(LocalDateTime.now()));
+            final com.pfproject.api.model.donneedebase.Service service) {
+        service.setCreatedAt(String.valueOf(LocalDateTime.now()));
 
-        return repository.save(article);
+        return repository.save(service);
     }
 
     @Override
@@ -30,26 +30,27 @@ public class BasicServiceService implements ServiceService {
         return repository.findAll();
     }
 
+    @Override
     public com.pfproject.api.model.donneedebase.Service findByDesignation(String designation) {
         return repository.findByDesignation(designation);
     }
-
+    @Override
     public com.pfproject.api.model.donneedebase.Service findByCode(String code) {
         return repository.findByCode(code);
     }
 
     @Override
     public com.pfproject.api.model.donneedebase.Service update(final String code,
-            final com.pfproject.api.model.donneedebase.Service article) {
+            final com.pfproject.api.model.donneedebase.Service service) {
 
         final com.pfproject.api.model.donneedebase.Service saved = repository.findByCode(code);
-        article.setId(saved.getId());
+        service.setId(saved.getId());
 
-        article.setCreatedAt(saved.getCreatedAt());
-        article.setUpdatedAt(String.valueOf(LocalDateTime.now()));
+        service.setCreatedAt(saved.getCreatedAt());
+        service.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 
-        repository.save(article);
-        return article;
+        repository.save(service);
+        return service;
     }
 
 }
