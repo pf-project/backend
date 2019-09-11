@@ -7,6 +7,8 @@ import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.parametrage.configurationdebase.CoursDeChangesDTO;
 import com.pfproject.api.model.parametrage.configurationdebase.CoursDeChanges;
 import com.pfproject.api.model.parametrage.configurationdebase.Unites;
+import com.pfproject.api.model.parametrage.configurationdebase.coursdechange.CoursDeChange;
+import com.pfproject.api.model.parametrage.configurationdebase.unites.Devise;
 import com.pfproject.api.service.parametrage.configurationdebase.coursdechanges.CoursDeChangesService;
 import com.pfproject.api.service.parametrage.configurationdebase.unites.UnitesService;
 
@@ -57,14 +59,44 @@ public class CoursDeChangesController {
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findDevise", method = RequestMethod.GET)
+    public ResponseEntity<?> findDevise() {
+        List<Unites> unites = serviceUnites.findAll();
+
+        return new ResponseEntity<>(unites.get(0).getDevise(), HttpStatus.OK);
+    }
+
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final CoursDeChangesDTO dto) {
 
-        CoursDeChanges unites = service.update(id, converterFacade.convertCoursDeChanges(dto));
+        CoursDeChanges coursDeChanges = service.update(id, converterFacade.convertCoursDeChanges(dto));
 
-        return new ResponseEntity<>(unites, HttpStatus.OK);
+        List<CoursDeChange> coursDeChange = coursDeChanges.getCoursdechange();
+
+        Unites unites = serviceUnites.findAll().get(0);
+
+        List<Devise> devises = unites.getDevise();
+
+        for(CoursDeChange coursChange : coursDeChange){
+            devises = overRideDevise(devises,coursChange);
+        }
+
+
+        serviceUnites.update(unites.getId(),unites);
+        return new ResponseEntity<>(coursDeChanges, HttpStatus.OK);
+    }
+
+    public List<Devise> overRideDevise(List<Devise> devises , CoursDeChange coursDeChange){
+        for(Devise devise : devises){
+            if(devise.getCode().equalsIgnoreCase(coursDeChange.getConvertir())
+            && devise.getUnite_conversion().equalsIgnoreCase(coursDeChange.getDeviseCible()) ){
+                devise.setFacteur_conversion(coursDeChange.getTaux());
+            }
+        }
+        return devises;
     }
 
 }

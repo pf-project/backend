@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.pfproject.api.model.parametrage.configurationdebase.CoursDeChanges;
 import com.pfproject.api.model.parametrage.configurationdebase.ListesDeBase;
+import com.pfproject.api.model.parametrage.configurationdebase.unites.Devise;
 
 public interface CoursDeChangesService {
 
@@ -14,6 +15,8 @@ public interface CoursDeChangesService {
     List<CoursDeChanges> findAll();
 
     CoursDeChanges update(String id, CoursDeChanges object);
+
+
 
     // String delete(String id);
 }

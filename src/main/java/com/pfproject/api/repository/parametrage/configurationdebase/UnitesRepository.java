@@ -2,6 +2,7 @@ package com.pfproject.api.repository.parametrage.configurationdebase;
 
 import com.pfproject.api.model.parametrage.configurationdebase.Unites;
 
+import com.pfproject.api.model.parametrage.configurationdebase.unites.Devise;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
