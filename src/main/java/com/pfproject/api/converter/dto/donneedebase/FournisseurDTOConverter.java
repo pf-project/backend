@@ -33,6 +33,7 @@ public class FournisseurDTOConverter implements Converter<FournisseurDTO, Fourni
         fournisseur.setStatus_honoraire(dto.getStatus_honoraire());
         fournisseur.setTaux_tva(dto.getTaux_tva());
         fournisseur.setVille(dto.getVille());
+        fournisseur.setCompte(dto.getCompte());
 
         fournisseur.setArchived(dto.isArchived());
 

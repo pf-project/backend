@@ -9,6 +9,7 @@ public class Fournisseur {
     private static final long serialVersionUID = 7954225915563724664L;
 
     private ObjectId id;
+    private String compte ;
     private Boolean retenu_a_la_source;
     private String adresse ;
     private String civilite;
@@ -38,6 +39,14 @@ public class Fournisseur {
     private boolean archived;
 
     private String createdAt;
+
+    public String getCompte() {
+        return compte;
+    }
+
+    public void setCompte(String compte) {
+        this.compte = compte;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
