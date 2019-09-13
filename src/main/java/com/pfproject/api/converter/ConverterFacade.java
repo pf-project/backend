@@ -2,6 +2,7 @@ package com.pfproject.api.converter;
 
 import com.pfproject.api.converter.factory.ConverterFactory;
 import com.pfproject.api.dto.UserDTO;
+import com.pfproject.api.dto.comptabiite.donnedebase.caisse.CaisseDTO;
 import com.pfproject.api.dto.donneedebase.FournisseurDTO;
 import com.pfproject.api.dto.parametrage.categorie.CategorieArticleDTO;
 import com.pfproject.api.dto.parametrage.categorie.CategorieServiceDTO;
@@ -11,6 +12,7 @@ import com.pfproject.api.dto.parametrage.configurationdebase.UnitesDTO;
 import com.pfproject.api.model.User;
 import com.pfproject.api.dto.donneedebase.ArticleDTO;
 import com.pfproject.api.dto.donneedebase.ServiceDTO;
+import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.model.donneedebase.Article;
 import com.pfproject.api.model.donneedebase.Fournisseur;
 import com.pfproject.api.model.donneedebase.Service;
@@ -73,4 +75,8 @@ public class ConverterFacade {
         return (CoursDeChanges) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 
+    public Caisse convertCaisse(final CaisseDTO dto) {
+
+        return (Caisse) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
 }
