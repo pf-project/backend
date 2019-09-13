@@ -1,5 +1,6 @@
 package com.pfproject.api.service.parametrage.configurationdebase.listesdebase;
 
+import com.pfproject.api.model.parametrage.configurationdebase.listesdebase.Ville;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,11 @@ public class BasicListesDeBaseService implements ListesDeBaseService {
         ObjectId new_id = new ObjectId(id);
         object.setId(new_id);
         return repository.save(object);
+    }
+
+    @Override
+    public List<Ville> findVilles() {
+        return repository.findVilles();
     }
 
 }

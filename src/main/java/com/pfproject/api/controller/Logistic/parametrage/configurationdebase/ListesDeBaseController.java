@@ -6,6 +6,7 @@ import java.util.List;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.parametrage.configurationdebase.ListesDeBaseDTO;
 import com.pfproject.api.model.parametrage.configurationdebase.ListesDeBase;
+import com.pfproject.api.model.parametrage.configurationdebase.listesdebase.Ville;
 import com.pfproject.api.service.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
 
 import org.apache.log4j.Logger;
@@ -39,11 +40,8 @@ public class ListesDeBaseController {
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody final ListesDeBaseDTO dto) {
-        log.info("1");
         ListesDeBase listesDeBaseConverted = converterFacade.convertListesDeBase(dto);
-        log.info("2");
         ListesDeBase listesDeBase = service.create(listesDeBaseConverted);
-        log.info("3");
         return new ResponseEntity<>(listesDeBase, HttpStatus.OK);
     }
 
@@ -52,6 +50,12 @@ public class ListesDeBaseController {
     public ResponseEntity<?> find() {
         List<ListesDeBase> liste = service.findAll();
 
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/find/villes", method = RequestMethod.GET)
+    public ResponseEntity<?> findVilles() {
+        List<Ville> liste = service.findVilles();
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
