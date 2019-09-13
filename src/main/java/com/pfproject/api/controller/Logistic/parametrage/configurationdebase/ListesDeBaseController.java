@@ -56,6 +56,14 @@ public class ListesDeBaseController {
     }
 
     @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findVillesByPays", method = RequestMethod.GET)
+    public ResponseEntity<?> findVillesByPays(@PathVariable final String ville) {
+        List<ListesDeBase> liste = service.findAll();
+
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final ListesDeBaseDTO dto) {
 
