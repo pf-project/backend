@@ -1,5 +1,6 @@
 package com.pfproject.api.service.parametrage.configurationdebase.coursdechanges;
 
+import com.pfproject.api.model.parametrage.configurationdebase.unites.Devise;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,7 @@ public class BasicCoursDeChangesService implements CoursDeChangesService {
         object.setId(new_id);
         return repository.save(object);
     }
+
+
 
 }

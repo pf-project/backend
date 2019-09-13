@@ -4,7 +4,7 @@ public class Devise {
     private int id;
     private String code;
     private String designation;
-    private int facteur_conversion;
+    private String facteur_conversion;
     private String unite_conversion;
 
     public int getId() {
@@ -31,11 +31,11 @@ public class Devise {
         this.designation = designation;
     }
 
-    public int getFacteur_conversion() {
+    public String getFacteur_conversion() {
         return this.facteur_conversion;
     }
 
-    public void setFacteur_conversion(int facteur_conversion) {
+    public void setFacteur_conversion(String facteur_conversion) {
         this.facteur_conversion = facteur_conversion;
     }
 
