@@ -44,9 +44,9 @@ public class CaisseController {
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public ResponseEntity<?> find() {
 
+        List<Caisse> liste = service.findAll();
 
-
-        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
 

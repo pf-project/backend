@@ -32,7 +32,7 @@ public class BasicCaisseService implements CaisseService {
 
     @Override
     public List<Caisse> findAll() {
-        return repository.findNotArchived(false);
+        return repository.findByArchivedNotEqual(true);
     }
 
 //    public Caisse findByDesignation(String designation) {

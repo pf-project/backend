@@ -10,7 +10,8 @@ import java.util.List;
 @Repository
 public interface CaisseRepository extends MongoRepository<Caisse, String> {
     Caisse findByCode(final String code);
-    @Query(value="'archived':?0")
-    List<Caisse> findNotArchived(final boolean archived);
+
+    @Query("{archived : {$ne : ?0}}")
+    List<Caisse> findByArchivedNotEqual(Boolean archived);
 
 }
