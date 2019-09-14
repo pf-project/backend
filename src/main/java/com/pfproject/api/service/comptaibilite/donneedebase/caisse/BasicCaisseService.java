@@ -3,10 +3,11 @@ package com.pfproject.api.service.comptaibilite.donneedebase.caisse;
 import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.repository.comptabilite.donneedebase.caisse.CaisseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Service
 public class BasicCaisseService implements CaisseService {
 
     private final CaisseRepository repository;
