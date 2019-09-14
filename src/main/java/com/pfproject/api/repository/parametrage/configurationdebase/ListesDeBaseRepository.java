@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface ListesDeBaseRepository extends MongoRepository<ListesDeBase, String> {
-    @Query(fields = "{'villes' : 1 , 'id_' : 0}")
-     List<Ville> findVilles();
+//   @Query(value = "{'villes':{$elemMatch: {code:?0}}}" ,fields = "{'villes' : 1 , '_id' : 0}")
+//   List<ListesDeBase> findByCodeJustReturnVillesQuery(String ville);
 
 }

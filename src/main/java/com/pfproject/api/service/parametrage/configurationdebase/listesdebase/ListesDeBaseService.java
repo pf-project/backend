@@ -15,6 +15,6 @@ public interface ListesDeBaseService {
 
     ListesDeBase update(String id, ListesDeBase object);
 
-    List<Ville> findVilles();
+    List<Ville>  findVilles();
     // String delete(String id);
 }

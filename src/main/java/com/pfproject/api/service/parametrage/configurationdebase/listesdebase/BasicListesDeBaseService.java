@@ -53,7 +53,7 @@ public class BasicListesDeBaseService implements ListesDeBaseService {
 
     @Override
     public List<Ville> findVilles() {
-        return repository.findVilles();
+        return repository.findAll().get(0).getVilles();
     }
 
 }

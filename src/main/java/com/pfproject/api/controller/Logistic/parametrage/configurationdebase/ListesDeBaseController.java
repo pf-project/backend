@@ -55,7 +55,7 @@ public class ListesDeBaseController {
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/find/villes", method = RequestMethod.GET)
     public ResponseEntity<?> findVilles() {
-        List<Ville> liste = service.findVilles();
+        List<Ville>  liste = service.findVilles();
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
