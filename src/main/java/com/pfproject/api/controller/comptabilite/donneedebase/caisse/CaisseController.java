@@ -3,9 +3,9 @@ package com.pfproject.api.controller.comptabilite.donneedebase.caisse;
 
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.dto.comptabiite.donnedebase.caisse.CaisseDTO;
+import com.pfproject.api.dto.comptabilite.donneedebase.caisse.CaisseDTO;
 import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
-import com.pfproject.api.service.comptaibilite.donneedebase.caisse.CaisseService;
+import com.pfproject.api.service.comptabilite.donneedebase.caisse.CaisseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/comptabilite/donneedebase/caisse")

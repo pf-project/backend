@@ -1,6 +1,6 @@
 package com.pfproject.api.converter.dto.comptabilite.donneedebase.caisse;
 
-import com.pfproject.api.dto.comptabiite.donnedebase.caisse.CaisseDTO;
+import com.pfproject.api.dto.comptabilite.donneedebase.caisse.CaisseDTO;
 import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import org.springframework.core.convert.converter.Converter;
 
