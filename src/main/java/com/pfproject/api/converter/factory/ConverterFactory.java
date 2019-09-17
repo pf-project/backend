@@ -2,6 +2,7 @@ package com.pfproject.api.converter.factory;
 
 import com.pfproject.api.converter.dto.UserDTOConverter;
 import com.pfproject.api.converter.dto.comptabilite.donneedebase.caisse.CaisseDTOConverter;
+import com.pfproject.api.converter.dto.comptabilite.donneedebase.comptebancaire.CompteBancaireDTOConverter;
 import com.pfproject.api.converter.dto.logistic.donneedebase.FournisseurDTOConverter;
 import com.pfproject.api.converter.dto.logistic.parametrage.categorie.CategorieArticleDTOConverter;
 import com.pfproject.api.converter.dto.logistic.parametrage.categorie.CategorieServiceDTOConverter;
@@ -22,6 +23,7 @@ import com.pfproject.api.dto.logistic.donneedebase.ServiceDTO;
 import com.pfproject.api.converter.dto.comptabilite.donneedebase.comptegeneral.CompteGeneralDTOConverter;
 import com.pfproject.api.dto.comptabilite.donneedebase.caisse.CaisseDTO;
 import com.pfproject.api.dto.comptabilite.donneedebase.comptegeneral.CompteGeneralDTO;
+import com.pfproject.api.dto.comptabilite.donneedebase.comptebancaire.CompteBancaireDTO;
 
 
 import org.springframework.core.convert.converter.Converter;
@@ -54,6 +56,7 @@ public class ConverterFactory {
         converters.put(CoursDeChangesDTO.class, new CoursDeChangesDTOConverter());
         converters.put(CaisseDTO.class, new CaisseDTOConverter());
         converters.put(CompteGeneralDTO.class,new CompteGeneralDTOConverter());
+        converters.put(CompteBancaireDTO.class,new CompteBancaireDTOConverter());
     }
 
     public Converter getConverter(final Object type) {

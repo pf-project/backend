@@ -1,6 +1,6 @@
 package com.pfproject.api.converter.dto.comptabilite.donneedebase.comptebancaire;
 
-import com.pfproject.api.dto.comptabiite.donnedebase.comptebancaire.CompteBancaireDTO;
+import com.pfproject.api.dto.comptabilite.donneedebase.comptebancaire.CompteBancaireDTO;
 import com.pfproject.api.model.comptabilite.donneedebase.comptebancaire.CompteBancaire;
 import org.springframework.core.convert.converter.Converter;
 

@@ -1,4 +1,4 @@
-package com.pfproject.api.dto.comptabiite.donnedebase.comptebancaire;
+package com.pfproject.api.dto.comptabilite.donneedebase.comptebancaire;
 
 public class CompteBancaireDTO {
 
