@@ -15,15 +15,9 @@ public interface CompteGeneralService {
     List<CompteGeneral> findRubriquesByClasse(String classe);
     List<CompteGeneral> findPostesByRubrique(String rubrique);
     List<CompteGeneral> findComptesByPoste(String poste);
-
-
-
-
-
+    List<CompteGeneral> findByCompte(int compte);
     List<CompteGeneral> findAll();
-
     CompteGeneral update(String code, CompteGeneral object);
-
      String delete(String id);
 
 }

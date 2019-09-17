@@ -53,6 +53,11 @@ public class BasicCompteGeneralService implements CompteGeneralService {
         return repository.findComptesByPoste(((Integer.parseInt(poste)+1)*10),(Integer.parseInt(poste)*10));
     }
 
+    @Override
+    public List<CompteGeneral> findByCompte(int compte) {
+        return repository.findByCompte(compte);
+    }
+
 
     @Override
     public List<CompteGeneral> findAll() {
