@@ -25,4 +25,7 @@ public interface CompteGeneralRepository extends MongoRepository<CompteGeneral, 
     @Query("{archived : {$ne : ?0}}")
     List<CompteGeneral> findByArchivedNotEqual(Boolean archived);
 
+    @Query(value = "{'compte' : ?0}" )
+    List<CompteGeneral> findByCompte(int compte);
+
 }

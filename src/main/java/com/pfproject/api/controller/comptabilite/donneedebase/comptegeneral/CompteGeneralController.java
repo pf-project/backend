@@ -48,6 +48,17 @@ public class CompteGeneralController {
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findDesignation/{compte}", method = RequestMethod.GET)
+    public ResponseEntity<?> findDesignation(@PathVariable final String compte) {
+        List<CompteGeneral> compteGeneral = service.findByCompte(Integer.parseInt(compte));
+
+
+        MessageDTO message = new MessageDTO();
+        message.setMessage(compteGeneral.get(0).getDesignation());
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/findClasses", method = RequestMethod.GET)
