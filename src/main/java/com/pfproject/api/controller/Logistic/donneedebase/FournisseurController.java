@@ -2,9 +2,9 @@ package com.pfproject.api.controller.Logistic.donneedebase;
 
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.dto.donneedebase.FournisseurDTO;
-import com.pfproject.api.model.donneedebase.Fournisseur;
-import com.pfproject.api.service.donneedebase.FournisseurService.FournisseurService;
+import com.pfproject.api.dto.logistic.donneedebase.FournisseurDTO;
+import com.pfproject.api.model.logistic.donneedebase.Fournisseur;
+import com.pfproject.api.service.logitic.donneedebase.FournisseurService.FournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.pfproject.api.repository.donnedebase;
 
 
-import com.pfproject.api.model.donneedebase.Fournisseur;
+import com.pfproject.api.model.logistic.donneedebase.Fournisseur;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

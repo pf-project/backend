@@ -1,16 +1,15 @@
 package com.pfproject.api.controller.Logistic.parametrage.configurationdebase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.parametrage.configurationdebase.CoursDeChangesDTO;
-import com.pfproject.api.model.parametrage.configurationdebase.CoursDeChanges;
-import com.pfproject.api.model.parametrage.configurationdebase.Unites;
-import com.pfproject.api.model.parametrage.configurationdebase.coursdechange.CoursDeChange;
-import com.pfproject.api.model.parametrage.configurationdebase.unites.Devise;
-import com.pfproject.api.service.parametrage.configurationdebase.coursdechanges.CoursDeChangesService;
-import com.pfproject.api.service.parametrage.configurationdebase.unites.UnitesService;
+import com.pfproject.api.dto.logistic.parametrage.configurationdebase.CoursDeChangesDTO;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.CoursDeChanges;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.Unites;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.coursdechange.CoursDeChange;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Devise;
+import com.pfproject.api.service.logitic.parametrage.configurationdebase.coursdechanges.CoursDeChangesService;
+import com.pfproject.api.service.logitic.parametrage.configurationdebase.unites.UnitesService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

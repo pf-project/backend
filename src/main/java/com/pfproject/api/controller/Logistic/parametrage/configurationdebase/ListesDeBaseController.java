@@ -1,13 +1,12 @@
 package com.pfproject.api.controller.Logistic.parametrage.configurationdebase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.parametrage.configurationdebase.ListesDeBaseDTO;
-import com.pfproject.api.model.parametrage.configurationdebase.ListesDeBase;
-import com.pfproject.api.model.parametrage.configurationdebase.listesdebase.Ville;
-import com.pfproject.api.service.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
+import com.pfproject.api.dto.logistic.parametrage.configurationdebase.ListesDeBaseDTO;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.ListesDeBase;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.Ville;
+import com.pfproject.api.service.logitic.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

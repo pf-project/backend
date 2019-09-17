@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.parametrage.categorie.CategorieArticleDTO;
-import com.pfproject.api.model.parametrage.categorie.CategorieArticle;
-import com.pfproject.api.service.parametrage.categorie.CategorieArticleService.CategorieArticleService;
+import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieArticleDTO;
+import com.pfproject.api.model.logistic.parametrage.categorie.CategorieArticle;
+import com.pfproject.api.service.logitic.parametrage.categorie.CategorieArticleService.CategorieArticleService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
