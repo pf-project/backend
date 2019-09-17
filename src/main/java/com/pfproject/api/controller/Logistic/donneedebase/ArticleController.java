@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.donneedebase.ArticleDTO;
+import com.pfproject.api.dto.logistic.donneedebase.ArticleDTO;
 import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.service.donneedebase.ArticleService.ArticleService;
-import com.pfproject.api.service.parametrage.categorie.CategorieArticleService.CategorieArticleService;
+import com.pfproject.api.service.logitic.donneedebase.ArticleService.ArticleService;
+import com.pfproject.api.service.logitic.parametrage.categorie.CategorieArticleService.CategorieArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-import com.pfproject.api.model.donneedebase.Article;
-import com.pfproject.api.model.parametrage.categorie.CategorieArticle;
+import com.pfproject.api.model.logistic.donneedebase.Article;
+import com.pfproject.api.model.logistic.parametrage.categorie.CategorieArticle;
 import java.util.Map;
 import java.util.HashMap;
-
-import org.apache.log4j.Logger;
 
 @RestController
 @RequestMapping(value = "/api/logistic/article")
