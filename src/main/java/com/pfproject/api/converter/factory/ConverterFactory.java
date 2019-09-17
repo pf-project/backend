@@ -11,7 +11,6 @@ import com.pfproject.api.converter.dto.logistic.parametrage.configurationdebase.
 import com.pfproject.api.converter.dto.logistic.donneedebase.ArticleDTOConverter;
 import com.pfproject.api.converter.dto.logistic.donneedebase.ServiceDTOConverter;
 import com.pfproject.api.dto.UserDTO;
-import com.pfproject.api.dto.comptabiite.donnedebase.caisse.CaisseDTO;
 import com.pfproject.api.dto.logistic.donneedebase.FournisseurDTO;
 import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieArticleDTO;
 import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieServiceDTO;
@@ -20,6 +19,10 @@ import com.pfproject.api.dto.logistic.parametrage.configurationdebase.ListesDeBa
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.UnitesDTO;
 import com.pfproject.api.dto.logistic.donneedebase.ArticleDTO;
 import com.pfproject.api.dto.logistic.donneedebase.ServiceDTO;
+import com.pfproject.api.converter.dto.comptabilite.donneedebase.comptegeneral.CompteGeneralDTOConverter;
+import com.pfproject.api.dto.comptabilite.donneedebase.caisse.CaisseDTO;
+import com.pfproject.api.dto.comptabilite.donneedebase.comptegeneral.CompteGeneralDTO;
+
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -50,6 +53,7 @@ public class ConverterFactory {
         converters.put(UnitesDTO.class, new UnitesDTOConverter());
         converters.put(CoursDeChangesDTO.class, new CoursDeChangesDTOConverter());
         converters.put(CaisseDTO.class, new CaisseDTOConverter());
+        converters.put(CompteGeneralDTO.class,new CompteGeneralDTOConverter());
     }
 
     public Converter getConverter(final Object type) {

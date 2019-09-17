@@ -1,4 +1,4 @@
-package com.pfproject.api.dto.comptabiite.donnedebase.caisse;
+package com.pfproject.api.dto.comptabilite.donneedebase.caisse;
 
 import org.bson.types.ObjectId;
 

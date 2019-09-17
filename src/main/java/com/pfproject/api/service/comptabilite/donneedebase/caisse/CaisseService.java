@@ -1,4 +1,4 @@
-package com.pfproject.api.service.comptaibilite.donneedebase.caisse;
+package com.pfproject.api.service.comptabilite.donneedebase.caisse;
 
 import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import java.util.List;

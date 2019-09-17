@@ -1,4 +1,4 @@
-package com.pfproject.api.service.comptaibilite.donneedebase.caisse;
+package com.pfproject.api.service.comptabilite.donneedebase.caisse;
 
 import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.repository.comptabilite.donneedebase.caisse.CaisseRepository;
@@ -32,7 +32,7 @@ public class BasicCaisseService implements CaisseService {
 
     @Override
     public List<Caisse> findAll() {
-        return repository.findNotArchived(false);
+        return repository.findByArchivedNotEqual(true);
     }
 
 //    public Caisse findByDesignation(String designation) {
