@@ -1,6 +1,7 @@
 package com.pfproject.api.converter.factory;
 
 import com.pfproject.api.converter.dto.UserDTOConverter;
+import com.pfproject.api.converter.dto.comptabilite.comptabilitegenerale.ecriturecomptable.EcritureComptableDTOConverter;
 import com.pfproject.api.converter.dto.comptabilite.donneedebase.caisse.CaisseDTOConverter;
 import com.pfproject.api.converter.dto.comptabilite.donneedebase.comptebancaire.CompteBancaireDTOConverter;
 import com.pfproject.api.converter.dto.logistic.donneedebase.FournisseurDTOConverter;
@@ -12,6 +13,7 @@ import com.pfproject.api.converter.dto.logistic.parametrage.configurationdebase.
 import com.pfproject.api.converter.dto.logistic.donneedebase.ArticleDTOConverter;
 import com.pfproject.api.converter.dto.logistic.donneedebase.ServiceDTOConverter;
 import com.pfproject.api.dto.UserDTO;
+import com.pfproject.api.dto.comptabilite.comptabilitegenerale.ecriturecomptable.EcritureComptableDTO;
 import com.pfproject.api.dto.logistic.donneedebase.FournisseurDTO;
 import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieArticleDTO;
 import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieServiceDTO;
@@ -57,6 +59,7 @@ public class ConverterFactory {
         converters.put(CaisseDTO.class, new CaisseDTOConverter());
         converters.put(CompteGeneralDTO.class,new CompteGeneralDTOConverter());
         converters.put(CompteBancaireDTO.class,new CompteBancaireDTOConverter());
+        converters.put(EcritureComptableDTO.class,new EcritureComptableDTOConverter());
     }
 
     public Converter getConverter(final Object type) {

@@ -4,6 +4,7 @@ import com.pfproject.api.converter.factory.ConverterFactory;
 import com.pfproject.api.dto.UserDTO;
 
 
+import com.pfproject.api.dto.comptabilite.comptabilitegenerale.ecriturecomptable.EcritureComptableDTO;
 import com.pfproject.api.dto.comptabilite.donneedebase.comptebancaire.CompteBancaireDTO;
 import com.pfproject.api.dto.logistic.donneedebase.FournisseurDTO;
 import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieArticleDTO;
@@ -16,6 +17,7 @@ import com.pfproject.api.dto.comptabilite.donneedebase.comptegeneral.CompteGener
 import com.pfproject.api.model.User;
 import com.pfproject.api.dto.logistic.donneedebase.ArticleDTO;
 import com.pfproject.api.dto.logistic.donneedebase.ServiceDTO;
+import com.pfproject.api.model.comptabilite.comptailitegenerale.ecriturecomptable.EcritureComptable;
 import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.model.comptabilite.donneedebase.comptebancaire.CompteBancaire;
 import com.pfproject.api.model.logistic.donneedebase.Article;
@@ -92,5 +94,9 @@ public class ConverterFacade {
 
     public CompteBancaire convertCompteBancaire(final CompteBancaireDTO dto){
         return (CompteBancaire) converterFactory.getConverter(dto.getClass()).convert(dto);
+    }
+
+    public EcritureComptable convertEcritureComptablee(final EcritureComptableDTO dto){
+        return (EcritureComptable) converterFactory.getConverter(dto.getClass()).convert(dto);
     }
 }
