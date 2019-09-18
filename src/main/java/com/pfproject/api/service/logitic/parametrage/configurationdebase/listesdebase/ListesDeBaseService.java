@@ -3,7 +3,7 @@ package com.pfproject.api.service.logitic.parametrage.configurationdebase.listes
 import java.util.List;
 
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.ListesDeBase;
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.Ville;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.*;
 
 public interface ListesDeBaseService {
 
@@ -16,5 +16,11 @@ public interface ListesDeBaseService {
     ListesDeBase update(String id, ListesDeBase object);
 
     List<Ville>  findVilles();
+    List<Pays>  findPays();
+    List<TVA>  findTVA();
+    List<Langue>  findLangue();
+    List<ModeDePayement>  findModeDePayement();
+    List<Honoraire>  findHonoraire();
+    List<Banque>  findBanque();;
     // String delete(String id);
 }

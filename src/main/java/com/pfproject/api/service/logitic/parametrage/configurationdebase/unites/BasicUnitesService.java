@@ -1,5 +1,6 @@
 package com.pfproject.api.service.logitic.parametrage.configurationdebase.unites;
 
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.*;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,36 @@ public class BasicUnitesService implements UnitesService {
         ObjectId new_id = new ObjectId(id);
         object.setId(new_id);
         return repository.save(object);
+    }
+
+    @Override
+    public List<Poids> findPoids() {
+        return repository.findAll().get(0).getPoids();
+    }
+
+    @Override
+    public List<Devise> findDevise() {
+        return repository.findAll().get(0).getDevise();
+    }
+
+    @Override
+    public List<Volume> findVolume() {
+        return repository.findAll().get(0).getVolume();
+    }
+
+    @Override
+    public List<Longueur> findLongueur() {
+        return repository.findAll().get(0).getLongueur();
+    }
+
+    @Override
+    public List<Duree> findDuree() {
+        return repository.findAll().get(0).getDuree();
+    }
+
+    @Override
+    public List<PhysiquoChimique> findPhysiquoChimique() {
+        return repository.findAll().get(0).getPhysiquo_chimique();
     }
 
 

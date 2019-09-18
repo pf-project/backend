@@ -3,6 +3,7 @@ package com.pfproject.api.service.logitic.parametrage.configurationdebase.unites
 import java.util.List;
 
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.Unites;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.*;
 
 public interface UnitesService {
 
@@ -15,5 +16,13 @@ public interface UnitesService {
     Unites update(String id, Unites object);
 
     // String delete(String id);
+
+    List<Poids> findPoids();
+    List<Devise> findDevise();
+    List<Volume> findVolume();
+    List<Longueur> findLongueur();
+    List<Duree> findDuree();
+    List<PhysiquoChimique> findPhysiquoChimique();
+
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.UnitesDTO;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.Unites;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.*;
 import com.pfproject.api.service.logitic.parametrage.configurationdebase.unites.UnitesService;
 
 import org.apache.log4j.Logger;
@@ -51,6 +52,50 @@ public class UnitesController {
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
+
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findPoids", method = RequestMethod.GET)
+    public ResponseEntity<?> findPoids() {
+        List<Poids>  liste = service.findPoids();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findDevises", method = RequestMethod.GET)
+    public ResponseEntity<?> findDevises() {
+        List<Devise>  liste = service.findDevise();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/finVolumes", method = RequestMethod.GET)
+    public ResponseEntity<?> finVolumes() {
+        List<Volume>  liste = service.findVolume();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findLongueurs", method = RequestMethod.GET)
+    public ResponseEntity<?> findLongueurs() {
+        List<Longueur>  liste = service.findLongueur();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findDurees", method = RequestMethod.GET)
+    public ResponseEntity<?> findDurees() {
+        List<Duree>  liste = service.findDuree();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findPhysiquoChimique", method = RequestMethod.GET)
+    public ResponseEntity<?> findPhysiquoChimique() {
+        List<PhysiquoChimique>  liste = service.findPhysiquoChimique();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)

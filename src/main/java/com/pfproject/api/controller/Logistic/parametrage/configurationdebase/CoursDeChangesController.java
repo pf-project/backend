@@ -67,6 +67,7 @@ public class CoursDeChangesController {
     }
 
 
+
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final CoursDeChangesDTO dto) {

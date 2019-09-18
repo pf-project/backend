@@ -5,7 +5,7 @@ import java.util.List;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.ListesDeBaseDTO;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.ListesDeBase;
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.Ville;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.*;
 import com.pfproject.api.service.logitic.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
 
 import org.apache.log4j.Logger;
@@ -52,11 +52,59 @@ public class ListesDeBaseController {
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
     @Secured("ROLE_ADMIN")
-    @RequestMapping(value = "/find/villes", method = RequestMethod.GET)
+    @RequestMapping(value = "/findVilles", method = RequestMethod.GET)
     public ResponseEntity<?> findVilles() {
         List<Ville>  liste = service.findVilles();
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findPays", method = RequestMethod.GET)
+    public ResponseEntity<?> findPays() {
+        List<Pays>  liste = service.findPays();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findTVA", method = RequestMethod.GET)
+    public ResponseEntity<?> findTVA() {
+        List<TVA>  liste = service.findTVA();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findLangues", method = RequestMethod.GET)
+    public ResponseEntity<?> findLangues() {
+        List<Langue>  liste = service.findLangue();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findBanques", method = RequestMethod.GET)
+    public ResponseEntity<?> findBanques() {
+        List<Banque>  liste = service.findBanque();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findModeDePayement", method = RequestMethod.GET)
+    public ResponseEntity<?> findModeDePayement() {
+        List<ModeDePayement>  liste = service.findModeDePayement();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findHonorire", method = RequestMethod.GET)
+    public ResponseEntity<?> findHonorire() {
+        List<Honoraire>  liste = service.findHonoraire();
+        return new ResponseEntity<>(liste, HttpStatus.OK);
+    }
+
+
+
+
+
+
 
 
     @Secured("ROLE_ADMIN")
