@@ -21,6 +21,7 @@ public class CompteBancaire  extends BaseEntity {
     private String swift;
     private String type_compte;
     private String ville ;
+    private boolean archived;
 
     public String getIBAN() {
         return IBAN;
@@ -156,5 +157,13 @@ public class CompteBancaire  extends BaseEntity {
 
     public void setVille(String ville) {
         this.ville = ville;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 }

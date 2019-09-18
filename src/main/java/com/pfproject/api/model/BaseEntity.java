@@ -15,15 +15,6 @@ public class BaseEntity implements Serializable {
     private String id;
     private String createdAt;
     private String updatedAt;
-    private boolean archived;
-
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
 
     public BaseEntity() {
     }
