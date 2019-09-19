@@ -1,5 +1,6 @@
 package com.pfproject.api.repository.comptabilite.donneedebase.comptegeneral;
 
+import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.model.comptabilite.donneedebase.comptegeneral.CompteGeneral;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -27,5 +28,11 @@ public interface CompteGeneralRepository extends MongoRepository<CompteGeneral, 
 
     @Query(value = "{'compte' : ?0}" )
     List<CompteGeneral> findByCompte(int compte);
+
+
+    CompteGeneral findByDesignation(final String designation);
+
+
+
 
 }

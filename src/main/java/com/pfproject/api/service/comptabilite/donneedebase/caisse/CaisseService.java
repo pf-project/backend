@@ -9,7 +9,7 @@ public interface CaisseService {
 
     Caisse find(String id);
 
-//    Caisse findByDesignation(String designation);
+   Caisse findByDesignation(String designation);
 
     Caisse findByCode(String code);
 

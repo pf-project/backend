@@ -8,8 +8,9 @@ public class CaisseDTO {
     public  String pays;
     public String statu;
     public String devise;
-    public String comptegeneral;
+    public String compte;
     public String codeJournal;
+    public int niveau;
 
     public CaisseDTO() {
     }
@@ -55,12 +56,12 @@ public class CaisseDTO {
         this.devise = devise;
     }
 
-    public String getComptegeneral() {
-        return comptegeneral;
+    public String getCompte() {
+        return compte;
     }
 
-    public void setComptegeneral(String comptegeneral) {
-        this.comptegeneral = comptegeneral;
+    public void setCompte(String compte) {
+        this.compte = compte;
     }
 
     public String getCodeJournal() {
@@ -71,6 +72,11 @@ public class CaisseDTO {
         this.codeJournal = codeJournal;
     }
 
+    public int getNiveau() {
+        return niveau;
+    }
 
-
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
+    }
 }

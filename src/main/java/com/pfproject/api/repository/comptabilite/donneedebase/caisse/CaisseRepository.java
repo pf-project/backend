@@ -11,7 +11,12 @@ import java.util.List;
 public interface CaisseRepository extends MongoRepository<Caisse, String> {
     Caisse findByCode(final String code);
 
+    Caisse findByDesignation(final String designation);
+
     @Query("{archived : {$ne : ?0}}")
     List<Caisse> findByArchivedNotEqual(Boolean archived);
+
+    @Query("{'classe':5,'niveau':{$gte : 5},archived:false}")
+    List<Caisse> findCaisses();
 
 }

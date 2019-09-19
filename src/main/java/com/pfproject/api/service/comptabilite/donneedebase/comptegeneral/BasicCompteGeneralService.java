@@ -1,8 +1,10 @@
 package com.pfproject.api.service.comptabilite.donneedebase.comptegeneral;
 
 
+import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.model.comptabilite.donneedebase.comptegeneral.CompteGeneral;
 import com.pfproject.api.repository.comptabilite.donneedebase.comptegeneral.CompteGeneralRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,8 @@ public class BasicCompteGeneralService implements CompteGeneralService {
 
         return repository.findOne(id);
     }
+
+
 
     @Override
     public List<CompteGeneral> findClasses() {
@@ -74,7 +78,7 @@ public class BasicCompteGeneralService implements CompteGeneralService {
     public CompteGeneral update(final String id, final CompteGeneral caisse) {
 
         final CompteGeneral saved = repository.findOne(id);
-        caisse.setId(saved.getId());
+        caisse.setId(new ObjectId(saved.getId()));
 
         caisse.setCreatedAt(saved.getCreatedAt());
         caisse.setUpdatedAt(String.valueOf(LocalDateTime.now()));

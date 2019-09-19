@@ -1,7 +1,9 @@
 package com.pfproject.api.model.comptabilite.donneedebase.caisse;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "plancomptable")
 public class Caisse  {
     public ObjectId id;
     public String code;
@@ -9,8 +11,10 @@ public class Caisse  {
     public  String pays;
     public String statu;
     public String devise;
-    public String comptegeneral;
+    public String compte;
     public String codeJournal;
+    public  int niveau;
+    public int   classe;
 
     public  String createdAt;
     public String updatedBy;
@@ -46,8 +50,8 @@ public class Caisse  {
     public Caisse() {
     }
 
-    public ObjectId getId() {
-        return id;
+    public String getId() {
+        return id.toString();
     }
 
     public void setId(ObjectId id) {
@@ -94,13 +98,7 @@ public class Caisse  {
         this.devise = devise;
     }
 
-    public String getComptegeneral() {
-        return comptegeneral;
-    }
 
-    public void setComptegeneral(String comptegeneral) {
-        this.comptegeneral = comptegeneral;
-    }
 
     public String getCodeJournal() {
         return codeJournal;
@@ -116,5 +114,29 @@ public class Caisse  {
 
     public void setArchived(boolean archived) {
         this.archived = archived;
+    }
+
+    public String getCompte() {
+        return compte;
+    }
+
+    public void setCompte(String compte) {
+        this.compte = compte;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
+    }
+
+    public int getClasse() {
+        return classe;
+    }
+
+    public void setClasse(int classe) {
+        this.classe = classe;
     }
 }

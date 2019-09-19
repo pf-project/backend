@@ -10,11 +10,12 @@ public class CaisseDTOConverter  implements Converter<CaisseDTO, Caisse> {
         final Caisse caisse = new Caisse();
         caisse.setCode(dto.getCode());
         caisse.setCodeJournal(dto.getCodeJournal());
-        caisse.setComptegeneral(dto.getComptegeneral());
+        caisse.setCompte(dto.getCompte());
         caisse.setDesignation(dto.getDesignation());
         caisse.setDevise(dto.getDevise());
         caisse.setPays(dto.getPays());
         caisse.setStatu(dto.getStatu());
+        caisse.setNiveau(dto.getNiveau());
 
         return caisse;
     }

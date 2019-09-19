@@ -1,6 +1,7 @@
 package com.pfproject.api.service.comptabilite.donneedebase.comptegeneral;
 
 
+import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.model.comptabilite.donneedebase.comptegeneral.CompteGeneral;
 
 import java.util.List;
