@@ -12,6 +12,9 @@ public interface CompteGeneralService {
 
     CompteGeneral find(String id);
 
+
+    CompteGeneral findByDesignation(String designation);
+    List<CompteGeneral> findCompteGeneralForSuggetion();
     List<CompteGeneral> findClasses();
     List<CompteGeneral> findRubriquesByClasse(String classe);
     List<CompteGeneral> findPostesByRubrique(String rubrique);

@@ -69,9 +69,16 @@ public class BasicCompteGeneralService implements CompteGeneralService {
     }
 
 
-//    public Caisse findByDesignation(String designation) {
-//        return repository.findByDesignation(designation);
-//    }
+    public CompteGeneral findByDesignation(String designation) {
+        return repository.findByDesignation(designation);
+   }
+
+
+    @Override
+    public List<CompteGeneral> findCompteGeneralForSuggetion() {
+        return repository.findCompteGeneralForSuggetion();
+    }
+
 
 
     @Override

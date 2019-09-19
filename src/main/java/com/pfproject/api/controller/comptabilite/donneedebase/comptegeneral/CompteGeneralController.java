@@ -12,7 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/comptabilite/donneedebase/comptegeneral")
@@ -114,6 +117,44 @@ public class CompteGeneralController {
         CompteGeneral caisse = service.update(id, converterFacade.convertCompteGeneral(dto));
 
         return new ResponseEntity<>(caisse, HttpStatus.OK);
+    }
+
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findByDesignation/{designation}", method = RequestMethod.GET)
+    public ResponseEntity<?> findByDesignation(@PathVariable final String designation) {
+
+
+
+        return new ResponseEntity<>(service.findByDesignation(designation), HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/findByCompte/{compte}", method = RequestMethod.GET)
+    public ResponseEntity<?> findByCompte(@PathVariable final int compte) {
+        return new ResponseEntity<>(service.findByCompte(compte).get(0), HttpStatus.OK);
+    }
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/getCodesAndDesignations", method = RequestMethod.GET)
+    public ResponseEntity<?> getCodesAndDesignations() {
+        List<CompteGeneral> liste = service.findCompteGeneralForSuggetion();
+
+        List<String> designations = new ArrayList<String>();
+        for (CompteGeneral compteGeneral : liste) {
+            designations.add(compteGeneral.getDesignation());
+        }
+
+        List<String> comptes = new ArrayList<String>();
+        for (CompteGeneral compteGeneral : liste) {
+            comptes.add(Integer.toString(compteGeneral.getCompte()));
+        }
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("comptes", comptes);
+        map.put("designations", designations);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
 }

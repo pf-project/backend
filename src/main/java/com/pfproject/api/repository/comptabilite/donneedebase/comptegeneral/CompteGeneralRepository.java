@@ -28,6 +28,8 @@ public interface CompteGeneralRepository extends MongoRepository<CompteGeneral, 
 
     @Query(value = "{'compte' : ?0}" )
     List<CompteGeneral> findByCompte(int compte);
+    @Query(value = "{'niveau':{$gte:5},archived:false,utilized:false}" )
+    List<CompteGeneral> findCompteGeneralForSuggetion();
 
 
     CompteGeneral findByDesignation(final String designation);
