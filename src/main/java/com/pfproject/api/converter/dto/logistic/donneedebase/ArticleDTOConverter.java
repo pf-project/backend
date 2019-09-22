@@ -46,6 +46,9 @@ public class ArticleDTOConverter implements Converter<ArticleDTO, Article> {
         article.setUnite_vente(dto.getUnite_vente());
         article.setTaux_tva_vente(dto.getTaux_tva_vente());
         article.setPrix_vente_TTC(dto.getPrix_vente_TTC());
+        
+        article.setType_unite_achat(dto.getType_unite_achat());
+        article.setType_unite_vente(dto.getType_unite_vente());
 
         article.setArchived(dto.isArchived());
         article.setCreatedAt(dto.getCreatedAt());

@@ -48,6 +48,8 @@ public class Article {
     private String unite_vente;
     private String taux_tva_vente;
     private String prix_vente_TTC;
+    private String type_unite_achat;
+    private String type_unite_vente;
 
     private boolean archived;
 
@@ -373,4 +375,22 @@ public class Article {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public String getType_unite_achat() {
+        return type_unite_achat;
+    }
+
+    public void setType_unite_achat(String type_unite_achat) {
+        this.type_unite_achat = type_unite_achat;
+    }
+
+    public String getType_unite_vente() {
+        return type_unite_vente;
+    }
+
+    public void setType_unite_vente(String type_unite_vente) {
+        this.type_unite_vente = type_unite_vente;
+    }
+    
+    
 }
