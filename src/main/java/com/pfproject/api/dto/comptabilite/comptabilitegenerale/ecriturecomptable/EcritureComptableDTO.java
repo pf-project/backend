@@ -3,6 +3,7 @@ package com.pfproject.api.dto.comptabilite.comptabilitegenerale.ecriturecomptabl
 import java.util.List;
 
 public class EcritureComptableDTO {
+    private int num;
     private String journal;
     private String reference;
     private  String dateComptable;
@@ -56,5 +57,13 @@ public class EcritureComptableDTO {
 
     public void setDataTable(List<OperationDTO> dataTable) {
         this.dataTable = dataTable;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 }
