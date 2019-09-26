@@ -22,10 +22,10 @@ public class BasicEcritureCompatbleService implements EcritureComptableService {
     public EcritureComptable create(EcritureComptable object) {
         String ecriture_comptable = object.getJournal().substring(0, 1)
                 + "-"
-                + object.getDateComptable().substring(object.getDateComptable().length() - 4)
+                + object.getDateComptable().substring(0,4)
                 + "-"
                 + String.format("%04d", repository.count());
-        object.setEcriture_comtable(ecriture_comptable);
+        object.setEcriture_comptable(ecriture_comptable);
         return repository.save(object);
     }
 
