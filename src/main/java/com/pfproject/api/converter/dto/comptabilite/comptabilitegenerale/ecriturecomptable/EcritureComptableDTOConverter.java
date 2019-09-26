@@ -19,8 +19,6 @@ public class EcritureComptableDTOConverter implements Converter<EcritureComptabl
         ecritureComptable.setLettrageManuel(dto.getLettrageManuel());
         ecritureComptable.setLibelleOperation(dto.getLibelleOperation());
         ecritureComptable.setReference(dto.getReference());
-        
-        
 
         List<Operation> operations = new ArrayList<Operation>();
         List<OperationDTO> operationDTOS = dto.getDataTable();
