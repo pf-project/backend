@@ -13,6 +13,7 @@ public class EcritureComptable extends EntityBase {
     private String lettrageManuel;
     private String libelleOperation;
     private List<Operation> dataTable;
+    private String ecriture_comtable;
 
     public String getJournal() {
         return journal;
@@ -60,5 +61,13 @@ public class EcritureComptable extends EntityBase {
 
     public void setDataTable(List<Operation> dataTable) {
         this.dataTable = dataTable;
+    }
+
+    public String getEcriture_comtable() {
+        return ecriture_comtable;
+    }
+
+    public void setEcriture_comtable(String ecriture_comtable) {
+        this.ecriture_comtable = ecriture_comtable;
     }
 }

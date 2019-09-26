@@ -57,4 +57,6 @@ public class EcritureComptableDTO {
     public void setDataTable(List<OperationDTO> dataTable) {
         this.dataTable = dataTable;
     }
+
+    
 }
