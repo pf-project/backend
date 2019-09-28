@@ -1,26 +1,25 @@
 package com.pfproject.api.controller.Logistic.donneedebase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.logistic.donneedebase.ArticleDTO;
 import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.service.logitic.donneedebase.ArticleService.ArticleService;
-import com.pfproject.api.service.logitic.parametrage.categorie.CategorieArticleService.CategorieArticleService;
+import com.pfproject.api.dto.logistic.donneedebase.ArticleDTO;
+import com.pfproject.api.model.logistic.donneedebase.Article;
+import com.pfproject.api.model.logistic.parametrage.categorie.CategorieArticle;
+import com.pfproject.api.service.logistic.donneedebase.ArticleService.ArticleService;
+import com.pfproject.api.service.logistic.parametrage.categorie.CategorieArticleService.CategorieArticleService;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
-import com.pfproject.api.model.logistic.donneedebase.Article;
-import com.pfproject.api.model.logistic.parametrage.categorie.CategorieArticle;
-import java.util.Map;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/api/logistic/article")
@@ -53,14 +52,7 @@ public class ArticleController {
     public ResponseEntity<?> find() {
         List<Article> liste = service.findAll();
 
-        List<Article> response = new ArrayList<Article>();
-        for (Article article : liste) {
-            if (!article.isArchived()) {
-                response.add(article);
-            }
-        }
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
@@ -69,8 +61,9 @@ public class ArticleController {
         Article article = service.findByDesignation(designation);
         CategorieArticle categorie = C_service.findByDesignation(article.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
-        if (!article.isArchived())
-            map.put("article", article);
+
+        map.put("article", article);
+
         map.put("categorie", categorie);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -81,8 +74,9 @@ public class ArticleController {
     public ResponseEntity<?> findByCode(@PathVariable final String code) {
         Article article = service.findByCode(code);
         Map<String, Object> map = new HashMap<String, Object>();
-        if (!article.isArchived())
-            map.put("article", article);
+
+        map.put("article", article);
+
         CategorieArticle categorie = C_service.findByDesignation(article.getCategorie());
         map.put("categorie", categorie);
 
@@ -96,14 +90,14 @@ public class ArticleController {
 
         List<String> designations = new ArrayList<String>();
         for (Article article : liste) {
-            if (!article.isArchived())
-                designations.add(article.getDesignation());
+            designations.add(article.getDesignation());
+
         }
 
         List<String> codes = new ArrayList<String>();
         for (Article article : liste) {
-            if (!article.isArchived())
-                codes.add(article.getCode());
+            codes.add(article.getCode());
+
         }
 
         Map<String, Object> map = new HashMap<String, Object>();

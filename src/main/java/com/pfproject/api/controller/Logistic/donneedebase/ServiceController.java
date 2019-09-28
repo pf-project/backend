@@ -1,26 +1,25 @@
 package com.pfproject.api.controller.Logistic.donneedebase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pfproject.api.converter.ConverterFacade;
-import com.pfproject.api.dto.logistic.donneedebase.ServiceDTO;
 import com.pfproject.api.dto.MessageDTO;
-import com.pfproject.api.service.logitic.donneedebase.ServiceService.ServiceService;
-import com.pfproject.api.service.logitic.parametrage.categorie.CategorieServiceService.CategorieServiceService;
+import com.pfproject.api.dto.logistic.donneedebase.ServiceDTO;
+import com.pfproject.api.model.logistic.donneedebase.Service;
+import com.pfproject.api.model.logistic.parametrage.categorie.CategorieService;
+import com.pfproject.api.service.logistic.donneedebase.ServiceService.ServiceService;
+import com.pfproject.api.service.logistic.parametrage.categorie.CategorieServiceService.CategorieServiceService;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
-import com.pfproject.api.model.logistic.donneedebase.Service;
-import com.pfproject.api.model.logistic.parametrage.categorie.CategorieService;
-import java.util.Map;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/api/logistic/service")
@@ -53,14 +52,7 @@ public class ServiceController {
     public ResponseEntity<?> find() {
         List<Service> liste = service.findAll();
 
-        List<Service> response = new ArrayList<Service>();
-        for (Service servicee : liste) {
-            if (!servicee.isArchived()) {
-                response.add(servicee);
-            }
-        }
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @Secured("ROLE_ADMIN")
@@ -69,8 +61,8 @@ public class ServiceController {
         Service servicee = service.findByDesignation(designation);
         CategorieService categorie = C_service.findByDesignation(servicee.getCategorie());
         Map<String, Object> map = new HashMap<String, Object>();
-        if (!servicee.isArchived())
-            map.put("service", servicee);
+        map.put("service", servicee);
+
         map.put("categorie", categorie);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
@@ -81,8 +73,8 @@ public class ServiceController {
     public ResponseEntity<?> findByCode(@PathVariable final String code) {
         Service servicee = service.findByCode(code);
         Map<String, Object> map = new HashMap<String, Object>();
-        if (!servicee.isArchived())
-            map.put("service", servicee);
+        map.put("service", servicee);
+
         CategorieService categorie = C_service.findByDesignation(servicee.getCategorie());
         map.put("categorie", categorie);
 
@@ -96,14 +88,14 @@ public class ServiceController {
 
         List<String> designations = new ArrayList<String>();
         for (Service servicee : liste) {
-            if (!servicee.isArchived())
-                designations.add(servicee.getDesignation());
+            designations.add(servicee.getDesignation());
+
         }
 
         List<String> codes = new ArrayList<String>();
         for (Service servicee : liste) {
-            if (!servicee.isArchived())
-                codes.add(servicee.getCode());
+            codes.add(servicee.getCode());
+
         }
 
         Map<String, Object> map = new HashMap<String, Object>();

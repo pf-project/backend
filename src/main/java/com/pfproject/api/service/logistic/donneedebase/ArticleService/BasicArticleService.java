@@ -1,12 +1,11 @@
-package com.pfproject.api.service.logitic.donneedebase.ArticleService;
+package com.pfproject.api.service.logistic.donneedebase.ArticleService;
 
 import com.pfproject.api.model.logistic.donneedebase.Article;
 import com.pfproject.api.repository.donnedebase.ArticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BasicArticleService implements ArticleService {
@@ -27,7 +26,7 @@ public class BasicArticleService implements ArticleService {
 
     @Override
     public List<Article> findAll() {
-        return repository.findAll();
+        return repository.findByArchivedNotEqual(true);
     }
 
     public Article findByDesignation(String designation) {

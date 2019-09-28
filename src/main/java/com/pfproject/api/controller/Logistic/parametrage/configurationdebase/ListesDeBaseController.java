@@ -6,7 +6,7 @@ import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.ListesDeBaseDTO;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.ListesDeBase;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.*;
-import com.pfproject.api.service.logitic.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
+import com.pfproject.api.service.logistic.parametrage.configurationdebase.listesdebase.ListesDeBaseService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

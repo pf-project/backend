@@ -1,4 +1,4 @@
-package com.pfproject.api.service.logitic.donneedebase.ArticleService;
+package com.pfproject.api.service.logistic.donneedebase.ArticleService;
 
 import com.pfproject.api.model.logistic.donneedebase.Article;
 

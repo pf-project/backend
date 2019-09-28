@@ -1,15 +1,14 @@
-package com.pfproject.api.service.logitic.donneedebase.FournisseurService;
+package com.pfproject.api.service.logistic.donneedebase.FournisseurService;
 
 import com.pfproject.api.model.logistic.donneedebase.Fournisseur;
 import com.pfproject.api.repository.donnedebase.FournisseurRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @Service
-public class BasicFournisseurService implements  FournisseurService {
+public class BasicFournisseurService implements FournisseurService {
 
     private final FournisseurRepository repository;
 
@@ -17,7 +16,6 @@ public class BasicFournisseurService implements  FournisseurService {
     public BasicFournisseurService(final FournisseurRepository repository) {
         this.repository = repository;
     }
-
 
     @Override
     public Fournisseur create(
@@ -29,13 +27,14 @@ public class BasicFournisseurService implements  FournisseurService {
 
     @Override
     public List<Fournisseur> findAll() {
-        return repository.findAll();
+        return repository.findByArchivedNotEqual(true);
     }
 
     @Override
     public Fournisseur findByDesignation(String designation) {
         return repository.findByDesignation(designation);
     }
+
     @Override
     public Fournisseur findByCode(String code) {
         return repository.findByCode(code);
@@ -43,7 +42,7 @@ public class BasicFournisseurService implements  FournisseurService {
 
     @Override
     public Fournisseur update(final String code,
-                                                               final Fournisseur fournisseur) {
+            final Fournisseur fournisseur) {
 
         final Fournisseur saved = repository.findByCode(code);
         fournisseur.setId(saved.getId());

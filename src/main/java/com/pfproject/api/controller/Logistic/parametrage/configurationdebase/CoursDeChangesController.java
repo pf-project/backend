@@ -8,8 +8,8 @@ import com.pfproject.api.model.logistic.parametrage.configurationdebase.CoursDeC
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.Unites;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.coursdechange.CoursDeChange;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Devise;
-import com.pfproject.api.service.logitic.parametrage.configurationdebase.coursdechanges.CoursDeChangesService;
-import com.pfproject.api.service.logitic.parametrage.configurationdebase.unites.UnitesService;
+import com.pfproject.api.service.logistic.parametrage.configurationdebase.coursdechanges.CoursDeChangesService;
+import com.pfproject.api.service.logistic.parametrage.configurationdebase.unites.UnitesService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

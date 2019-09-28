@@ -1,4 +1,4 @@
-package com.pfproject.api.service.logitic.parametrage.configurationdebase.listesdebase;
+package com.pfproject.api.service.logistic.parametrage.configurationdebase.listesdebase;
 
 import java.util.List;
 

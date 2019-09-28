@@ -1,11 +1,10 @@
-package com.pfproject.api.service.logitic.donneedebase.ServiceService;
+package com.pfproject.api.service.logistic.donneedebase.ServiceService;
 
 import com.pfproject.api.repository.donnedebase.ServiceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BasicServiceService implements ServiceService {
@@ -27,13 +26,14 @@ public class BasicServiceService implements ServiceService {
 
     @Override
     public List<com.pfproject.api.model.logistic.donneedebase.Service> findAll() {
-        return repository.findAll();
+        return repository.findByArchivedNotEqual(true);
     }
 
     @Override
     public com.pfproject.api.model.logistic.donneedebase.Service findByDesignation(String designation) {
         return repository.findByDesignation(designation);
     }
+
     @Override
     public com.pfproject.api.model.logistic.donneedebase.Service findByCode(String code) {
         return repository.findByCode(code);
@@ -41,7 +41,7 @@ public class BasicServiceService implements ServiceService {
 
     @Override
     public com.pfproject.api.model.logistic.donneedebase.Service update(final String code,
-                                                                        final com.pfproject.api.model.logistic.donneedebase.Service service) {
+            final com.pfproject.api.model.logistic.donneedebase.Service service) {
 
         final com.pfproject.api.model.logistic.donneedebase.Service saved = repository.findByCode(code);
         service.setId(saved.getId());

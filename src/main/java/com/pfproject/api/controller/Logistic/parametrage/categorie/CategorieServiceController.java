@@ -6,7 +6,7 @@ import java.util.List;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieServiceDTO;
 import com.pfproject.api.model.logistic.parametrage.categorie.CategorieService;
-import com.pfproject.api.service.logitic.parametrage.categorie.CategorieServiceService.CategorieServiceService;
+import com.pfproject.api.service.logistic.parametrage.categorie.CategorieServiceService.CategorieServiceService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

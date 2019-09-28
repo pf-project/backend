@@ -1,4 +1,4 @@
-package com.pfproject.api.service.logitic.parametrage.configurationdebase.unites;
+package com.pfproject.api.service.logistic.parametrage.configurationdebase.unites;
 
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.*;
 import org.bson.types.ObjectId;

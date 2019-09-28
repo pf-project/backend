@@ -1,4 +1,4 @@
-package com.pfproject.api.service.logitic.parametrage.configurationdebase.coursdechanges;
+package com.pfproject.api.service.logistic.parametrage.configurationdebase.coursdechanges;
 
 import java.util.List;
 

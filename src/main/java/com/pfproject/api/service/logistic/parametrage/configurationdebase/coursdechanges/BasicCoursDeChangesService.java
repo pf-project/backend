@@ -1,4 +1,4 @@
-package com.pfproject.api.service.logitic.parametrage.configurationdebase.coursdechanges;
+package com.pfproject.api.service.logistic.parametrage.configurationdebase.coursdechanges;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;

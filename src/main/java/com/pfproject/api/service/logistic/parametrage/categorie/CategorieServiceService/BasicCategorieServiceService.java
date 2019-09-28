@@ -1,4 +1,4 @@
-package com.pfproject.api.service.logitic.parametrage.categorie.CategorieServiceService;
+package com.pfproject.api.service.logistic.parametrage.categorie.CategorieServiceService;
 
 import com.pfproject.api.model.logistic.parametrage.categorie.CategorieService;
 import com.pfproject.api.repository.parametrage.categorie.CategorieServiceRepository;
