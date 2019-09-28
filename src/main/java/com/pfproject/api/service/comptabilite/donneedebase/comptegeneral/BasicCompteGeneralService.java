@@ -1,15 +1,11 @@
 package com.pfproject.api.service.comptabilite.donneedebase.comptegeneral;
 
-
-import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import com.pfproject.api.model.comptabilite.donneedebase.comptegeneral.CompteGeneral;
 import com.pfproject.api.repository.comptabilite.donneedebase.comptegeneral.CompteGeneralRepository;
-import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BasicCompteGeneralService implements CompteGeneralService {
@@ -28,14 +24,11 @@ public class BasicCompteGeneralService implements CompteGeneralService {
         return repository.save(compteGeneral);
     }
 
-
     @Override
     public CompteGeneral find(String id) {
 
         return repository.findOne(id);
     }
-
-
 
     @Override
     public List<CompteGeneral> findClasses() {
@@ -49,12 +42,12 @@ public class BasicCompteGeneralService implements CompteGeneralService {
 
     @Override
     public List<CompteGeneral> findPostesByRubrique(String rubrique) {
-        return repository.findPostesByRubriques(((Integer.parseInt(rubrique)+1)*10),(Integer.parseInt(rubrique)*10));
+        return repository.findPostesByRubriques(((Integer.parseInt(rubrique) + 1) * 10), (Integer.parseInt(rubrique) * 10));
     }
 
     @Override
     public List<CompteGeneral> findComptesByPoste(String poste) {
-        return repository.findComptesByPoste(((Integer.parseInt(poste)+1)*10),(Integer.parseInt(poste)*10));
+        return repository.findComptesByPoste(((Integer.parseInt(poste) + 1) * 10), (Integer.parseInt(poste) * 10));
     }
 
     @Override
@@ -62,32 +55,26 @@ public class BasicCompteGeneralService implements CompteGeneralService {
         return repository.findByCompte(compte);
     }
 
-
     @Override
     public List<CompteGeneral> findAll() {
         return repository.findByArchivedNotEqual(true);
     }
 
-
     public CompteGeneral findByDesignation(String designation) {
         return repository.findByDesignation(designation);
-   }
-
+    }
 
     @Override
     public List<CompteGeneral> findCompteGeneralForSuggetion() {
         return repository.findCompteGeneralForSuggetion();
     }
 
-
-
     @Override
     public CompteGeneral update(final String id, final CompteGeneral caisse) {
 
         final CompteGeneral saved = repository.findOne(id);
-        caisse.setId(new ObjectId(saved.getId()));
+        caisse.setId(saved.getId());
 
-        caisse.setCreatedAt(saved.getCreatedAt());
         caisse.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 
         repository.save(caisse);

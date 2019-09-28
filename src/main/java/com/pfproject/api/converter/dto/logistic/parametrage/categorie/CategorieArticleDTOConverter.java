@@ -14,6 +14,8 @@ public class CategorieArticleDTOConverter implements Converter<CategorieArticleD
         categorie.setDesignation(dto.getDesignation());
         categorie.setGroupe(dto.getGroupe());
         categorie.setArticlesMetaData(dto.getArticlesMetaData());
+        categorie.setCreatedBy(dto.getCreatedBy());
+        categorie.setUpdatedBy(dto.getUpdatedBy());
         return categorie;
     }
 }

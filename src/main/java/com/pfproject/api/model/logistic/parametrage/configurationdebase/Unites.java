@@ -1,18 +1,15 @@
 package com.pfproject.api.model.logistic.parametrage.configurationdebase;
 
-import java.util.List;
-
+import com.pfproject.api.model.EntityBase;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Devise;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Duree;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Longueur;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.PhysiquoChimique;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Poids;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Volume;
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Longueur;
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Duree;
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.PhysiquoChimique;
+import java.util.List;
 
-import org.bson.types.ObjectId;
-
-public class Unites {
-    private ObjectId id;
+public class Unites extends EntityBase {
 
     private List<Devise> devise;
     private List<Poids> poids;
@@ -20,14 +17,6 @@ public class Unites {
     private List<Longueur> longueur;
     private List<Duree> duree;
     private List<PhysiquoChimique> physiquo_chimique;
-
-    public String getId() {
-        return this.id.toString();
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
 
     public List<Devise> getDevise() {
         return this.devise;

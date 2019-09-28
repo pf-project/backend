@@ -4,10 +4,9 @@ import com.pfproject.api.dto.comptabilite.comptabilitegenerale.ecriturecomptable
 import com.pfproject.api.dto.comptabilite.comptabilitegenerale.ecriturecomptable.OperationDTO;
 import com.pfproject.api.model.comptabilite.comptailitegenerale.ecriturecomptable.EcritureComptable;
 import com.pfproject.api.model.comptabilite.comptailitegenerale.ecriturecomptable.Operation;
-import org.springframework.core.convert.converter.Converter;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.core.convert.converter.Converter;
 
 public class EcritureComptableDTOConverter implements Converter<EcritureComptableDTO, EcritureComptable> {
 
@@ -19,6 +18,8 @@ public class EcritureComptableDTOConverter implements Converter<EcritureComptabl
         ecritureComptable.setLettrageManuel(dto.getLettrageManuel());
         ecritureComptable.setLibelleOperation(dto.getLibelleOperation());
         ecritureComptable.setReference(dto.getReference());
+        ecritureComptable.setCreatedBy(dto.getCreatedBy());
+        ecritureComptable.setUpdatedBy(dto.getUpdatedBy());
 
         List<Operation> operations = new ArrayList<Operation>();
         List<OperationDTO> operationDTOS = dto.getDataTable();

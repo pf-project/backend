@@ -2,14 +2,13 @@ package com.pfproject.api.service.comptabilite.comptabilitegenerale.ecriturecomp
 
 import com.pfproject.api.model.comptabilite.comptailitegenerale.ecriturecomptable.EcritureComptable;
 import com.pfproject.api.repository.comptabilite.comptabilitegenerale.ecriturecomptable.EcritureComptableRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class BasicEcritureCompatbleService implements EcritureComptableService {
-
 
     private final EcritureComptableRepository repository;
 
@@ -22,10 +21,11 @@ public class BasicEcritureCompatbleService implements EcritureComptableService {
     public EcritureComptable create(EcritureComptable object) {
         String ecriture_comptable = object.getJournal().substring(0, 1)
                 + "-"
-                + object.getDateComptable().substring(0,4)
+                + object.getDateComptable().substring(0, 4)
                 + "-"
                 + String.format("%04d", repository.count());
         object.setEcriture_comptable(ecriture_comptable);
+        object.setCreatedAt(String.valueOf(LocalDateTime.now()));
         return repository.save(object);
     }
 

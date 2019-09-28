@@ -1,11 +1,12 @@
 package com.pfproject.api.dto.comptabilite.donneedebase.caisse;
 
-import org.bson.types.ObjectId;
+import com.pfproject.api.model.EntityBase;
 
-public class CaisseDTO {
+public class CaisseDTO extends EntityBase {
+
     public String code;
     public String designation;
-    public  String pays;
+    public String pays;
     public String statu;
     public String devise;
     public String compte;
@@ -14,7 +15,6 @@ public class CaisseDTO {
 
     public CaisseDTO() {
     }
-
 
     public String getCode() {
         return code;

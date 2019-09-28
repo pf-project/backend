@@ -46,7 +46,6 @@ public class BasicServiceService implements ServiceService {
         final com.pfproject.api.model.logistic.donneedebase.Service saved = repository.findByCode(code);
         service.setId(saved.getId());
 
-        service.setCreatedAt(saved.getCreatedAt());
         service.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 
         repository.save(service);

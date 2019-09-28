@@ -1,13 +1,11 @@
 package com.pfproject.api.converter.dto.logistic.parametrage.configurationdebase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.CoursDeChangesDTO;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.coursdechange.CoursDeChangeDTO;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.CoursDeChanges;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.coursdechange.CoursDeChange;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.core.convert.converter.Converter;
 
 public class CoursDeChangesDTOConverter implements Converter<CoursDeChangesDTO, CoursDeChanges> {
@@ -29,6 +27,8 @@ public class CoursDeChangesDTOConverter implements Converter<CoursDeChangesDTO, 
         }
 
         coursDeChanges.setCoursdechange(new_list_cours_de_change);
+        coursDeChanges.setCreatedBy(dto.getCreatedBy());
+        coursDeChanges.setUpdatedBy(dto.getUpdatedBy());
 
         return coursDeChanges;
     }

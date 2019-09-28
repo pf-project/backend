@@ -5,11 +5,12 @@ import com.pfproject.api.model.logistic.donneedebase.Fournisseur;
 import org.springframework.core.convert.converter.Converter;
 
 public class FournisseurDTOConverter implements Converter<FournisseurDTO, Fournisseur> {
+
     public Fournisseur convert(final FournisseurDTO dto) {
         final Fournisseur fournisseur = new Fournisseur();
 
         fournisseur.setRetenu_a_la_source(dto.getRetenu_a_la_source());
-        fournisseur.setAdresse(dto.getAdresse()); ;
+        fournisseur.setAdresse(dto.getAdresse());;
         fournisseur.setCivilite(dto.getCivilite());
         fournisseur.setCnss(dto.getCnss());
         fournisseur.setCode(dto.getCode());
@@ -35,12 +36,10 @@ public class FournisseurDTOConverter implements Converter<FournisseurDTO, Fourni
         fournisseur.setVille(dto.getVille());
         fournisseur.setCompte(dto.getCompte());
 
-        fournisseur.setArchived(dto.isArchived());
+        fournisseur.setCreatedBy(dto.getCreatedBy());
+        fournisseur.setUpdatedBy(dto.getUpdatedBy());
 
-        fournisseur.setCreatedAt(dto.getCreatedAt());
-
-        return fournisseur ;}
-
-
+        return fournisseur;
+    }
 
 }

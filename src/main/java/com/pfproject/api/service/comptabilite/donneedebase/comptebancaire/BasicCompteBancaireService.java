@@ -2,13 +2,13 @@ package com.pfproject.api.service.comptabilite.donneedebase.comptebancaire;
 
 import com.pfproject.api.model.comptabilite.donneedebase.comptebancaire.CompteBancaire;
 import com.pfproject.api.repository.comptabilite.donneedebase.comptebancaire.CompteBancaireRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.List;
 @Service
-public class BasicCompteBancaireService implements  CompteBancaireService {
+public class BasicCompteBancaireService implements CompteBancaireService {
 
     private final CompteBancaireRepository repository;
 
@@ -38,7 +38,6 @@ public class BasicCompteBancaireService implements  CompteBancaireService {
 //    public Caisse findByDesignation(String designation) {
 //        return repository.findByDesignation(designation);
 //    }
-
     public CompteBancaire findByCode(String code) {
         return repository.findByCode(code);
     }
@@ -49,7 +48,6 @@ public class BasicCompteBancaireService implements  CompteBancaireService {
         final CompteBancaire saved = repository.findByCode(code);
         caisse.setId(saved.getId());
 
-        caisse.setCreatedAt(saved.getCreatedAt());
         caisse.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 
         repository.save(caisse);

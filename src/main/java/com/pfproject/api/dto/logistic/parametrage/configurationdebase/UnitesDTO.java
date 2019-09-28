@@ -1,10 +1,10 @@
 package com.pfproject.api.dto.logistic.parametrage.configurationdebase;
 
+import com.pfproject.api.dto.logistic.parametrage.configurationdebase.unites.*;
+import com.pfproject.api.model.EntityBase;
 import java.util.List;
 
-import com.pfproject.api.dto.logistic.parametrage.configurationdebase.unites.*;
-
-public class UnitesDTO {
+public class UnitesDTO extends EntityBase {
 
     private List<DeviseDTO> devise;
     private List<PoidsDTO> poids;

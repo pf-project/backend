@@ -1,8 +1,5 @@
 package com.pfproject.api.converter.dto.logistic.parametrage.configurationdebase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.UnitesDTO;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.unites.DeviseDTO;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.unites.DureeDTO;
@@ -17,7 +14,8 @@ import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.L
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.PhysiquoChimique;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Poids;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Volume;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.core.convert.converter.Converter;
 
 public class UnitesDTOConverter implements Converter<UnitesDTO, Unites> {
@@ -98,6 +96,9 @@ public class UnitesDTOConverter implements Converter<UnitesDTO, Unites> {
         unites.setPhysiquo_chimique(new_list_physiquo_chimique);
         unites.setPoids(new_list_poids);
         unites.setVolume(new_list_volume);
+
+        unites.setCreatedBy(dto.getCreatedBy());
+        unites.setUpdatedBy(dto.getUpdatedBy());
 
         return unites;
     }

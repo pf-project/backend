@@ -1,9 +1,8 @@
 package com.pfproject.api.dto.comptabilite.donneedebase.comptegeneral;
 
-import org.bson.types.ObjectId;
+import com.pfproject.api.model.EntityBase;
 
-public class CompteGeneralDTO {
-    private ObjectId id;
+public class CompteGeneralDTO extends EntityBase {
 
     private String classe;
     private String niveau;
@@ -14,18 +13,6 @@ public class CompteGeneralDTO {
     private String comptepere;
     private String typecompte;
     private String compteancien;
-    private String createdAt;
-    private String updatedAt;
-    private  String createdBy;
-    private boolean archived;
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
 
     public String getClasse() {
         return classe;
@@ -65,38 +52,6 @@ public class CompteGeneralDTO {
 
     public void setUtilized(boolean utilized) {
         this.utilized = utilized;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
     }
 
     public String getComptepere() {

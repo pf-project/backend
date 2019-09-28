@@ -1,13 +1,10 @@
 package com.pfproject.api.model.logistic.parametrage.configurationdebase;
 
+import com.pfproject.api.model.EntityBase;
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.*;
 import java.util.List;
 
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.*;
-
-import org.bson.types.ObjectId;
-
-public class ListesDeBase {
-    private ObjectId id;
+public class ListesDeBase extends EntityBase {
 
     private List<Pays> pays;
     private List<Ville> villes;
@@ -16,14 +13,6 @@ public class ListesDeBase {
     private List<ModeDePayement> mode_payment;
     private List<Honoraire> honoraires;
     private List<Banque> banques;
-
-    public String getId() {
-        return this.id.toString();
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
 
     public List<Pays> getPays() {
         return this.pays;

@@ -1,15 +1,13 @@
 package com.pfproject.api.dto.logistic.donneedebase;
 
+import com.pfproject.api.model.EntityBase;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import org.bson.types.ObjectId;
-
-public class ArticleDTO implements Serializable {
+public class ArticleDTO extends EntityBase implements Serializable {
 
     private static final long serialVersionUID = 91201774547107674L;
-    private ObjectId id;
 
     private String code;
     private String designation;
@@ -46,27 +44,15 @@ public class ArticleDTO implements Serializable {
     private String unite_vente;
     private String taux_tva_vente;
     private String prix_vente_TTC;
-    
+
     private String type_unite_achat;
     private String type_unite_vente;
-    private String createdAt;
-
-    private boolean archived;
-    private String updatedAt;
 
     public ArticleDTO() {
     }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public String getCode() {
@@ -349,30 +335,6 @@ public class ArticleDTO implements Serializable {
         this.prix_vente_TTC = prix_vente_TTC;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public String getType_unite_achat() {
         return type_unite_achat;
     }
@@ -388,5 +350,5 @@ public class ArticleDTO implements Serializable {
     public void setType_unite_vente(String type_unite_vente) {
         this.type_unite_vente = type_unite_vente;
     }
-    
+
 }

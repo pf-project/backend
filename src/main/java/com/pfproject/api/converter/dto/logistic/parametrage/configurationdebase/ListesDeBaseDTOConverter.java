@@ -1,8 +1,5 @@
 package com.pfproject.api.converter.dto.logistic.parametrage.configurationdebase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.ListesDeBaseDTO;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.listesdebase.BanqueDTO;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.listesdebase.HonoraireDTO;
@@ -19,7 +16,8 @@ import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesde
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.Pays;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.TVA;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.Ville;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.core.convert.converter.Converter;
 
 public class ListesDeBaseDTOConverter implements Converter<ListesDeBaseDTO, ListesDeBase> {
@@ -27,7 +25,6 @@ public class ListesDeBaseDTOConverter implements Converter<ListesDeBaseDTO, List
     @Override
     public ListesDeBase convert(final ListesDeBaseDTO dto) {
         final ListesDeBase listesDeBase = new ListesDeBase();
-        System.out.println("converter ");
         List<Pays> new_list_pays = new ArrayList<Pays>();
         List<PaysDTO> list_pays = dto.getPays();
         for (PaysDTO pays : list_pays) {
@@ -107,6 +104,8 @@ public class ListesDeBaseDTOConverter implements Converter<ListesDeBaseDTO, List
         listesDeBase.setHonoraires(new_list_honoraire);
         listesDeBase.setMode_payment(new_list_mode_payement);
         listesDeBase.setBanques(new_list_banque);
+        listesDeBase.setCreatedBy(dto.getCreatedBy());
+        listesDeBase.setUpdatedBy(dto.getUpdatedBy());
 
         return listesDeBase;
     }

@@ -3,34 +3,36 @@ package com.pfproject.api.controller.comptabilite.donneedebase.comptebancaire;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
 import com.pfproject.api.dto.comptabilite.donneedebase.comptebancaire.CompteBancaireDTO;
+import com.pfproject.api.model.User;
 import com.pfproject.api.model.comptabilite.donneedebase.comptebancaire.CompteBancaire;
 import com.pfproject.api.service.comptabilite.donneedebase.comptebancaire.CompteBancaireService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
 
 @RestController
 @RequestMapping(value = "/api/comptabilite/donneedebase/comptebancaire")
 public class CompteBancaireController {
 
-
     private final CompteBancaireService service;
     private final ConverterFacade converterFacade;
 
     @Autowired
-    public CompteBancaireController(final CompteBancaireService service,final ConverterFacade converterFacade) {
+    public CompteBancaireController(final CompteBancaireService service, final ConverterFacade converterFacade) {
         this.service = service;
         this.converterFacade = converterFacade;
     }
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final CompteBancaireDTO dto) {
+    public ResponseEntity<?> create(@RequestBody final CompteBancaireDTO dto, final Authentication auth) {
+
+        User user = (User) auth.getDetails();
+        dto.setCreatedBy(user.getId());
 
         CompteBancaire caisse = service.create(converterFacade.convertCompteBancaire(dto));
 
@@ -45,10 +47,6 @@ public class CompteBancaireController {
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
-
-
-
-
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/archive/{code}", method = RequestMethod.DELETE)
@@ -65,7 +63,10 @@ public class CompteBancaireController {
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{code}", method = RequestMethod.POST)
-    public ResponseEntity<?> update(@PathVariable final String code, @RequestBody final CompteBancaireDTO dto) {
+    public ResponseEntity<?> update(@PathVariable final String code, @RequestBody final CompteBancaireDTO dto, final Authentication auth) {
+
+        User user = (User) auth.getDetails();
+        dto.setUpdatedBy(user.getId());
 
         CompteBancaire caisse = service.update(code, converterFacade.convertCompteBancaire(dto));
 

@@ -1,15 +1,12 @@
 package com.pfproject.api.model.logistic.donneedebase;
 
+import com.pfproject.api.model.EntityBase;
 import java.util.List;
 import java.util.Map;
 
-import org.bson.types.ObjectId;
-
-public class Service {
+public class Service extends EntityBase {
 
     private static final long serialVersionUID = 7954225915563724664L;
-
-    private ObjectId id;
 
     private String code;
     private String designation;
@@ -34,33 +31,12 @@ public class Service {
     private String taux_tva_vente;
     private String prix_vente_TTC;
 
-    private boolean archived;
-
-    private String createdAt;
-    private String updatedAt;
-
     public Service() {
 
     }
 
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
-
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public String getCode() {
@@ -231,19 +207,4 @@ public class Service {
         this.prix_vente_TTC = prix_vente_TTC;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

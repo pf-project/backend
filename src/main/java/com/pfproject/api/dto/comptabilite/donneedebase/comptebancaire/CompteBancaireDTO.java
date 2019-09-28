@@ -1,12 +1,14 @@
 package com.pfproject.api.dto.comptabilite.donneedebase.comptebancaire;
 
-public class CompteBancaireDTO {
+import com.pfproject.api.model.EntityBase;
 
-    private String IBAN ;
+public class CompteBancaireDTO extends EntityBase {
+
+    private String IBAN;
     private String adresse;
     private String agence;
     private boolean avec_compte_special;
-    private String  banque;
+    private String banque;
     private String cle_RIB;
     private String code;
     private String compte_general_special;
@@ -18,7 +20,7 @@ public class CompteBancaireDTO {
     private String status_compte;
     private String swift;
     private String type_compte;
-    private String ville ;
+    private String ville;
 
     public String getIBAN() {
         return IBAN;

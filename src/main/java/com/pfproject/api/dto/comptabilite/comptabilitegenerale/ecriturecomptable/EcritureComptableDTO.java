@@ -1,14 +1,17 @@
 package com.pfproject.api.dto.comptabilite.comptabilitegenerale.ecriturecomptable;
 
+import com.pfproject.api.model.EntityBase;
 import java.util.List;
 
-public class EcritureComptableDTO {
+public class EcritureComptableDTO extends EntityBase {
+
     private int num;
     private String journal;
     private String reference;
-    private  String dateComptable;
+    private String dateComptable;
     private String lettrageManuel;
     private String libelleOperation;
+
     private List<OperationDTO> dataTable;
 
     public String getJournal() {
@@ -58,6 +61,5 @@ public class EcritureComptableDTO {
     public void setDataTable(List<OperationDTO> dataTable) {
         this.dataTable = dataTable;
     }
-
 
 }

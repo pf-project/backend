@@ -1,21 +1,21 @@
 package com.pfproject.api.controller.Logistic.parametrage.configurationdebase;
 
-import java.util.List;
-
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.logistic.parametrage.configurationdebase.CoursDeChangesDTO;
+import com.pfproject.api.model.User;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.CoursDeChanges;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.Unites;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.coursdechange.CoursDeChange;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.Devise;
 import com.pfproject.api.service.logistic.parametrage.configurationdebase.coursdechanges.CoursDeChangesService;
 import com.pfproject.api.service.logistic.parametrage.configurationdebase.unites.UnitesService;
-
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +44,10 @@ public class CoursDeChangesController {
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final CoursDeChangesDTO dto) {
+    public ResponseEntity<?> create(@RequestBody final CoursDeChangesDTO dto, final Authentication auth) {
+
+        User user = (User) auth.getDetails();
+        dto.setCreatedBy(user.getId());
 
         CoursDeChanges unites = service.create(converterFacade.convertCoursDeChanges(dto));
 
@@ -58,6 +61,7 @@ public class CoursDeChangesController {
 
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
+
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/findDevise", method = RequestMethod.GET)
     public ResponseEntity<?> findDevise() {
@@ -66,11 +70,12 @@ public class CoursDeChangesController {
         return new ResponseEntity<>(unites.get(0).getDevise(), HttpStatus.OK);
     }
 
-
-
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final CoursDeChangesDTO dto) {
+    public ResponseEntity<?> update(@PathVariable final String id, @RequestBody final CoursDeChangesDTO dto, final Authentication auth) {
+
+        User user = (User) auth.getDetails();
+        dto.setUpdatedBy(user.getId());
 
         CoursDeChanges coursDeChanges = service.update(id, converterFacade.convertCoursDeChanges(dto));
 
@@ -80,19 +85,18 @@ public class CoursDeChangesController {
 
         List<Devise> devises = unites.getDevise();
 
-        for(CoursDeChange coursChange : coursDeChange){
-            devises = overRideDevise(devises,coursChange);
+        for (CoursDeChange coursChange : coursDeChange) {
+            devises = overRideDevise(devises, coursChange);
         }
 
-
-        serviceUnites.update(unites.getId(),unites);
+        serviceUnites.update(unites.getId().toString(), unites);
         return new ResponseEntity<>(coursDeChanges, HttpStatus.OK);
     }
 
-    public List<Devise> overRideDevise(List<Devise> devises , CoursDeChange coursDeChange){
-        for(Devise devise : devises){
-            if(devise.getCode().equalsIgnoreCase(coursDeChange.getConvertir())
-            && devise.getUnite_conversion().equalsIgnoreCase(coursDeChange.getDeviseCible()) ){
+    public List<Devise> overRideDevise(List<Devise> devises, CoursDeChange coursDeChange) {
+        for (Devise devise : devises) {
+            if (devise.getCode().equalsIgnoreCase(coursDeChange.getConvertir())
+                    && devise.getUnite_conversion().equalsIgnoreCase(coursDeChange.getDeviseCible())) {
                 devise.setFacteur_conversion(coursDeChange.getTaux());
             }
         }

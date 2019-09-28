@@ -1,16 +1,16 @@
 package com.pfproject.api.dto.logistic.parametrage.categorie;
 
+import com.pfproject.api.model.EntityBase;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class CategorieServiceDTO implements Serializable {
+public class CategorieServiceDTO extends EntityBase implements Serializable {
 
     private static final long serialVersionUID = 91201774547107674L;
     private String code;
     private String designation;
     private String groupe;
-    private String createdAt;
     private List<Map<String, Object>> articlesMetaData;
 
     public CategorieServiceDTO() {
@@ -46,14 +46,6 @@ public class CategorieServiceDTO implements Serializable {
 
     public void setGroupe(String groupe) {
         this.groupe = groupe;
-    }
-
-    public String getCreatedAt() {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
     }
 
 }

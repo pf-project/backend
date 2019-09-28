@@ -1,6 +1,7 @@
 package com.pfproject.api.dto.logistic.parametrage.configurationdebase.coursdechange;
 
 public class CoursDeChangeDTO {
+
     private int id;
 
     public int getId() {

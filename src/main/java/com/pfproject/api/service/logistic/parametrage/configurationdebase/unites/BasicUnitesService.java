@@ -1,14 +1,13 @@
 package com.pfproject.api.service.logistic.parametrage.configurationdebase.unites;
 
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.Unites;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.unites.*;
+import com.pfproject.api.repository.parametrage.configurationdebase.UnitesRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.Unites;
-import com.pfproject.api.repository.parametrage.configurationdebase.UnitesRepository;
 
 @Service
 public class BasicUnitesService implements UnitesService {
@@ -22,7 +21,7 @@ public class BasicUnitesService implements UnitesService {
 
     @Override
     public Unites create(final Unites unites) {
-        // categorie.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        unites.setCreatedAt(String.valueOf(LocalDateTime.now()));
 
         return repository.save(unites);
     }
@@ -31,7 +30,6 @@ public class BasicUnitesService implements UnitesService {
     // public User find(final String id) {
     // return repository.findOne(id);
     // }
-
     @Override
     public List<Unites> findAll() {
         return repository.findAll();
@@ -46,6 +44,7 @@ public class BasicUnitesService implements UnitesService {
     @Override
     public Unites update(String id, Unites object) {
         ObjectId new_id = new ObjectId(id);
+        object.setUpdatedAt(String.valueOf(LocalDateTime.now()));
         object.setId(new_id);
         return repository.save(object);
     }
@@ -79,6 +78,5 @@ public class BasicUnitesService implements UnitesService {
     public List<PhysiquoChimique> findPhysiquoChimique() {
         return repository.findAll().get(0).getPhysiquo_chimique();
     }
-
 
 }

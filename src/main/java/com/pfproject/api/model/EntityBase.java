@@ -8,6 +8,7 @@ public class EntityBase {
     private String createdAt;
     private String updatedAt;
     private String createdBy;
+    private String updatedBy;
     private boolean archived;
 
     public ObjectId getId() {
@@ -16,6 +17,14 @@ public class EntityBase {
 
     public void setId(ObjectId id) {
         this.id = id;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
     public String getCreatedAt() {
@@ -42,7 +51,7 @@ public class EntityBase {
         this.createdBy = createdBy;
     }
 
-    public boolean isArchived() {
+    public boolean getArchived() {
         return archived;
     }
 

@@ -1,19 +1,17 @@
 package com.pfproject.api.dto.logistic.donneedebase;
 
-import org.bson.types.ObjectId;
-
+import com.pfproject.api.model.EntityBase;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class FournisseurDTO implements Serializable {
+public class FournisseurDTO extends EntityBase implements Serializable {
 
     private static final long serialVersionUID = 7954225915563724664L;
 
-    private ObjectId id;
-    private String compte ;
+    private String compte;
     private Boolean retenu_a_la_source;
-    private String adresse ;
+    private String adresse;
     private String civilite;
     private String cnss;
     private String code;
@@ -23,24 +21,20 @@ public class FournisseurDTO implements Serializable {
     private List<Map<String, String>> coord_bancaire;
     private String designation;
     private String devise;
-    private String  group;
+    private String group;
     private Boolean honoraire;
     private String ice;
     private String identifiant_fiscale;
     private String langue;
     private String libelle_additionnel;
     private String mode_paiement;
-    private String  nombre_jours;
-    private String  patente;
+    private String nombre_jours;
+    private String patente;
     private String pays;
     private String regestre_commerce;
-    private String  status_honoraire;
+    private String status_honoraire;
     private String taux_tva;
     private String ville;
-
-    private boolean archived;
-
-    private String createdAt;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -52,14 +46,6 @@ public class FournisseurDTO implements Serializable {
 
     public void setCompte(String compte) {
         this.compte = compte;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public Boolean getRetenu_a_la_source() {
@@ -262,19 +248,4 @@ public class FournisseurDTO implements Serializable {
         this.ville = ville;
     }
 
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
 }

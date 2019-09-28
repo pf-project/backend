@@ -1,10 +1,10 @@
 package com.pfproject.api.dto.logistic.parametrage.configurationdebase;
 
+import com.pfproject.api.dto.logistic.parametrage.configurationdebase.listesdebase.*;
+import com.pfproject.api.model.EntityBase;
 import java.util.List;
 
-import com.pfproject.api.dto.logistic.parametrage.configurationdebase.listesdebase.*;
-
-public class ListesDeBaseDTO {
+public class ListesDeBaseDTO extends EntityBase {
 
     private List<PaysDTO> pays;
     private List<VilleDTO> villes;

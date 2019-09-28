@@ -1,15 +1,12 @@
 package com.pfproject.api.model.logistic.donneedebase;
 
+import com.pfproject.api.model.EntityBase;
 import java.util.List;
 import java.util.Map;
 
-import org.bson.types.ObjectId;
-
-public class Article {
+public class Article extends EntityBase {
 
     private static final long serialVersionUID = 7954225915563724664L;
-
-    private ObjectId id;
 
     private String code;
     private String designation;
@@ -51,33 +48,12 @@ public class Article {
     private String type_unite_achat;
     private String type_unite_vente;
 
-    private boolean archived;
-
-    private String createdAt;
-    private String updatedAt;
-
     public Article() {
 
     }
 
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
-
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public String getCode() {
@@ -360,22 +336,6 @@ public class Article {
         this.prix_vente_TTC = prix_vente_TTC;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public String getType_unite_achat() {
         return type_unite_achat;
     }
@@ -391,6 +351,5 @@ public class Article {
     public void setType_unite_vente(String type_unite_vente) {
         this.type_unite_vente = type_unite_vente;
     }
-    
-    
+
 }

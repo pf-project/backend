@@ -1,10 +1,11 @@
 package com.pfproject.api.model.logistic.parametrage.categorie;
 
-import org.springframework.data.mongodb.core.index.Indexed;
+import com.pfproject.api.model.EntityBase;
 import java.util.List;
 import java.util.Map;
+import org.springframework.data.mongodb.core.index.Indexed;
 
-public class CategorieArticle {
+public class CategorieArticle extends EntityBase {
 
     private static final long serialVersionUID = 7954225925563724664L;
 
@@ -14,7 +15,6 @@ public class CategorieArticle {
     @Indexed(unique = true)
     private String designation;
     private String groupe;
-    private String createdAt;
     private List<Map<String, Object>> articlesMetaData;
 
     public List<Map<String, Object>> getArticlesMetaData() {
@@ -49,11 +49,4 @@ public class CategorieArticle {
         this.groupe = groupe;
     }
 
-    public String getCreatedAt() {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
 }

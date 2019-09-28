@@ -33,8 +33,8 @@ public class ServiceDTOConverter implements Converter<ServiceDTO, Service> {
         service.setTaux_tva_vente(dto.getTaux_tva_vente());
         service.setPrix_vente_TTC(dto.getPrix_vente_TTC());
 
-        service.setArchived(dto.isArchived());
-        service.setCreatedAt(dto.getCreatedAt());
+        service.setCreatedBy(dto.getCreatedBy());
+        service.setUpdatedBy(dto.getUpdatedBy());
         return service;
     }
 }

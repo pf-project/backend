@@ -1,6 +1,7 @@
 package com.pfproject.api.dto.comptabilite.comptabilitegenerale.ecriturecomptable;
 
 public class OperationDTO {
+
     private String comptegeneral;
     private String designation;
     private String debiterCrediter;

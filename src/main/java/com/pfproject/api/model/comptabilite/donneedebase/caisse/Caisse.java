@@ -1,61 +1,22 @@
 package com.pfproject.api.model.comptabilite.donneedebase.caisse;
 
-import org.bson.types.ObjectId;
+import com.pfproject.api.model.EntityBase;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "plancomptable")
-public class Caisse  {
-    public ObjectId id;
+public class Caisse extends EntityBase {
+
     public String code;
     public String designation;
-    public  String pays;
+    public String pays;
     public String statu;
     public String devise;
     public String compte;
     public String codeJournal;
-    public  int niveau;
-    public int   classe;
-
-    public  String createdAt;
-    public String updatedBy;
-    public String updatedAt;
-    public  boolean archived;
-
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
+    public int niveau;
+    public int classe;
 
     public Caisse() {
-    }
-
-    public String getId() {
-        return id.toString();
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public String getCode() {
@@ -98,22 +59,12 @@ public class Caisse  {
         this.devise = devise;
     }
 
-
-
     public String getCodeJournal() {
         return codeJournal;
     }
 
     public void setCodeJournal(String codeJournal) {
         this.codeJournal = codeJournal;
-    }
-
-    public boolean getArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
     }
 
     public String getCompte() {

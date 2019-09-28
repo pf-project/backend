@@ -47,7 +47,6 @@ public class BasicFournisseurService implements FournisseurService {
         final Fournisseur saved = repository.findByCode(code);
         fournisseur.setId(saved.getId());
 
-        fournisseur.setCreatedAt(saved.getCreatedAt());
         fournisseur.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 
         repository.save(fournisseur);

@@ -3,6 +3,7 @@ package com.pfproject.api.controller.Logistic.donneedebase;
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.MessageDTO;
 import com.pfproject.api.dto.logistic.donneedebase.ArticleDTO;
+import com.pfproject.api.model.User;
 import com.pfproject.api.model.logistic.donneedebase.Article;
 import com.pfproject.api.model.logistic.parametrage.categorie.CategorieArticle;
 import com.pfproject.api.service.logistic.donneedebase.ArticleService.ArticleService;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +42,10 @@ public class ArticleController {
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final ArticleDTO dto) {
+    public ResponseEntity<?> create(@RequestBody final ArticleDTO dto, final Authentication auth) {
+
+        User user = (User) auth.getDetails();
+        dto.setCreatedBy(user.getId());
 
         Article article = service.create(converterFacade.convertArticle(dto));
 
@@ -122,7 +127,10 @@ public class ArticleController {
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/update/{code}", method = RequestMethod.POST)
-    public ResponseEntity<?> update(@PathVariable final String code, @RequestBody final ArticleDTO dto) {
+    public ResponseEntity<?> update(@PathVariable final String code, @RequestBody final ArticleDTO dto, final Authentication auth) {
+
+        User user = (User) auth.getDetails();
+        dto.setUpdatedBy(user.getId());
 
         Article article = service.update(code, converterFacade.convertArticle(dto));
 

@@ -1,18 +1,18 @@
 package com.pfproject.api.controller.Logistic.parametrage.categorie;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pfproject.api.converter.ConverterFacade;
 import com.pfproject.api.dto.logistic.parametrage.categorie.CategorieArticleDTO;
+import com.pfproject.api.model.User;
 import com.pfproject.api.model.logistic.parametrage.categorie.CategorieArticle;
 import com.pfproject.api.service.logistic.parametrage.categorie.CategorieArticleService.CategorieArticleService;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +38,10 @@ public class CategorieArticleController {
 
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody final CategorieArticleDTO dto) {
+    public ResponseEntity<?> create(@RequestBody final CategorieArticleDTO dto, final Authentication auth) {
+
+        User user = (User) auth.getDetails();
+        dto.setCreatedBy(user.getId());
 
         CategorieArticle categorie = service.create(converterFacade.convertCategorieArticle(dto));
 

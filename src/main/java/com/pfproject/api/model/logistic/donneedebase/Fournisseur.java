@@ -1,17 +1,16 @@
 package com.pfproject.api.model.logistic.donneedebase;
 
+import com.pfproject.api.model.EntityBase;
 import java.util.List;
 import java.util.Map;
-import org.bson.types.ObjectId;
 
-public class Fournisseur {
+public class Fournisseur extends EntityBase {
 
     private static final long serialVersionUID = 7954225915563724664L;
 
-    private ObjectId id;
-    private String compte ;
+    private String compte;
     private Boolean retenu_a_la_source;
-    private String adresse ;
+    private String adresse;
     private String civilite;
     private String cnss;
     private String code;
@@ -21,24 +20,20 @@ public class Fournisseur {
     private List<Map<String, String>> coord_bancaire;
     private String designation;
     private String devise;
-    private String  group;
+    private String group;
     private Boolean honoraire;
     private String ice;
     private String identifiant_fiscale;
     private String langue;
     private String libelle_additionnel;
     private String mode_paiement;
-    private String  nombre_jours;
-    private String  patente;
+    private String nombre_jours;
+    private String patente;
     private String pays;
     private String regestre_commerce;
-    private String  status_honoraire;
+    private String status_honoraire;
     private String taux_tva;
     private String ville;
-
-    private boolean archived;
-
-    private String createdAt;
 
     public String getCompte() {
         return compte;
@@ -52,41 +47,7 @@ public class Fournisseur {
         return serialVersionUID;
     }
 
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    private String updatedAt;
-
     public Fournisseur() {
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public Boolean getRetenu_a_la_source() {

@@ -1,8 +1,8 @@
 package com.pfproject.api.controller;
 
-import com.pfproject.api.model.ResponseWithToken;
 import com.pfproject.api.dto.LoginDTO;
 import com.pfproject.api.dto.MessageDTO;
+import com.pfproject.api.model.ResponseWithToken;
 import com.pfproject.api.security.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,4 +45,5 @@ public class AuthenticationController {
         }
 
     }
+
 }

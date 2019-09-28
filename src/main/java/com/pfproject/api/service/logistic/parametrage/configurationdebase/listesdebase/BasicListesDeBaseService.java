@@ -1,14 +1,13 @@
 package com.pfproject.api.service.logistic.parametrage.configurationdebase.listesdebase;
 
+import com.pfproject.api.model.logistic.parametrage.configurationdebase.ListesDeBase;
 import com.pfproject.api.model.logistic.parametrage.configurationdebase.listesdebase.*;
+import com.pfproject.api.repository.parametrage.configurationdebase.ListesDeBaseRepository;
+import java.time.LocalDateTime;
+import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-
-import com.pfproject.api.model.logistic.parametrage.configurationdebase.ListesDeBase;
-import com.pfproject.api.repository.parametrage.configurationdebase.ListesDeBaseRepository;
 
 @Service
 public class BasicListesDeBaseService implements ListesDeBaseService {
@@ -22,7 +21,7 @@ public class BasicListesDeBaseService implements ListesDeBaseService {
 
     @Override
     public ListesDeBase create(final ListesDeBase listesDeBase) {
-        // categorie.setCreatedAt(String.valueOf(LocalDateTime.now()));
+        listesDeBase.setCreatedAt(String.valueOf(LocalDateTime.now()));
 
         return repository.save(listesDeBase);
     }
@@ -31,7 +30,6 @@ public class BasicListesDeBaseService implements ListesDeBaseService {
     // public User find(final String id) {
     // return repository.findOne(id);
     // }
-
     @Override
     public List<ListesDeBase> findAll() {
         return repository.findAll();
@@ -46,7 +44,10 @@ public class BasicListesDeBaseService implements ListesDeBaseService {
     @Override
     public ListesDeBase update(String id, ListesDeBase object) {
         ObjectId new_id = new ObjectId(id);
+
         object.setId(new_id);
+
+        object.setUpdatedAt(String.valueOf(LocalDateTime.now()));
         return repository.save(object);
     }
 

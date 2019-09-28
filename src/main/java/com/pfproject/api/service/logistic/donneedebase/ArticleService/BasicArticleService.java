@@ -43,7 +43,6 @@ public class BasicArticleService implements ArticleService {
         final Article saved = repository.findByCode(code);
         article.setId(saved.getId());
 
-        article.setCreatedAt(saved.getCreatedAt());
         article.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 
         repository.save(article);

@@ -1,14 +1,14 @@
 package com.pfproject.api.model.comptabilite.donneedebase.comptebancaire;
 
-import com.pfproject.api.model.BaseEntity;
+import com.pfproject.api.model.EntityBase;
 
-public class CompteBancaire  extends BaseEntity {
+public class CompteBancaire extends EntityBase {
 
-    private String IBAN ;
+    private String IBAN;
     private String adresse;
     private String agence;
     private boolean avec_compte_special;
-    private String  banque;
+    private String banque;
     private String cle_RIB;
     private String code;
     private String compte_general_special;
@@ -20,8 +20,7 @@ public class CompteBancaire  extends BaseEntity {
     private String status_compte;
     private String swift;
     private String type_compte;
-    private String ville ;
-    private boolean archived;
+    private String ville;
 
     public String getIBAN() {
         return IBAN;
@@ -159,11 +158,4 @@ public class CompteBancaire  extends BaseEntity {
         this.ville = ville;
     }
 
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
 }

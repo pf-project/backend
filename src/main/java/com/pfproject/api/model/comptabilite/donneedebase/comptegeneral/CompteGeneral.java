@@ -1,11 +1,10 @@
 package com.pfproject.api.model.comptabilite.donneedebase.comptegeneral;
 
-import org.bson.types.ObjectId;
+import com.pfproject.api.model.EntityBase;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "plancomptable")
-public class CompteGeneral {
-    private ObjectId id;
+public class CompteGeneral extends EntityBase {
 
     private int classe;
     private int niveau;
@@ -15,18 +14,6 @@ public class CompteGeneral {
     private String typecompte;
     private String compteancien;
     private boolean utilized;
-    private String createdAt;
-    private String updatedAt;
-    private  String createdBy;
-    private boolean archived;
-
-    public String getId() {
-        return id.toString();
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
 
     public int getClasse() {
         return classe;
@@ -92,35 +79,4 @@ public class CompteGeneral {
         this.utilized = utilized;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
 }

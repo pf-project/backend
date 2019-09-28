@@ -4,7 +4,8 @@ import com.pfproject.api.dto.comptabilite.donneedebase.caisse.CaisseDTO;
 import com.pfproject.api.model.comptabilite.donneedebase.caisse.Caisse;
 import org.springframework.core.convert.converter.Converter;
 
-public class CaisseDTOConverter  implements Converter<CaisseDTO, Caisse> {
+public class CaisseDTOConverter implements Converter<CaisseDTO, Caisse> {
+
     @Override
     public Caisse convert(final CaisseDTO dto) {
         final Caisse caisse = new Caisse();
@@ -16,6 +17,8 @@ public class CaisseDTOConverter  implements Converter<CaisseDTO, Caisse> {
         caisse.setPays(dto.getPays());
         caisse.setStatu(dto.getStatu());
         caisse.setNiveau(dto.getNiveau());
+        caisse.setCreatedBy(dto.getCreatedBy());
+        caisse.setUpdatedBy(dto.getUpdatedBy());
 
         return caisse;
     }
