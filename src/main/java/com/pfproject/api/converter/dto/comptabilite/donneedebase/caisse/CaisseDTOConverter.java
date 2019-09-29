@@ -19,6 +19,7 @@ public class CaisseDTOConverter implements Converter<CaisseDTO, Caisse> {
         caisse.setNiveau(dto.getNiveau());
         caisse.setCreatedBy(dto.getCreatedBy());
         caisse.setUpdatedBy(dto.getUpdatedBy());
+        caisse.setCreatedAt(dto.getCreatedAt());
 
         return caisse;
     }

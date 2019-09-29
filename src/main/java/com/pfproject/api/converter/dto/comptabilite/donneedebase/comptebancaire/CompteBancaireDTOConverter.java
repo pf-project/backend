@@ -28,6 +28,7 @@ public class CompteBancaireDTOConverter implements Converter<CompteBancaireDTO, 
         compte.setSwift(compteBancaireDTO.getSwift());
         compte.setType_compte(compteBancaireDTO.getType_compte());
 
+        compte.setCreatedAt(compteBancaireDTO.getCreatedAt());
         compte.setCreatedBy(compteBancaireDTO.getCreatedBy());
         compte.setUpdatedBy(compteBancaireDTO.getUpdatedBy());
 

@@ -18,6 +18,7 @@ public class EcritureComptableDTOConverter implements Converter<EcritureComptabl
         ecritureComptable.setLettrageManuel(dto.getLettrageManuel());
         ecritureComptable.setLibelleOperation(dto.getLibelleOperation());
         ecritureComptable.setReference(dto.getReference());
+        ecritureComptable.setCreatedAt(dto.getCreatedAt());
         ecritureComptable.setCreatedBy(dto.getCreatedBy());
         ecritureComptable.setUpdatedBy(dto.getUpdatedBy());
 

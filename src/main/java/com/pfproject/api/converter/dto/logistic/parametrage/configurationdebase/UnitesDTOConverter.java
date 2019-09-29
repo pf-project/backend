@@ -100,6 +100,8 @@ public class UnitesDTOConverter implements Converter<UnitesDTO, Unites> {
         unites.setCreatedBy(dto.getCreatedBy());
         unites.setUpdatedBy(dto.getUpdatedBy());
 
+        unites.setCreatedAt(dto.getCreatedAt());
+
         return unites;
     }
 }

@@ -29,6 +29,7 @@ public class CoursDeChangesDTOConverter implements Converter<CoursDeChangesDTO, 
         coursDeChanges.setCoursdechange(new_list_cours_de_change);
         coursDeChanges.setCreatedBy(dto.getCreatedBy());
         coursDeChanges.setUpdatedBy(dto.getUpdatedBy());
+        coursDeChanges.setCreatedAt(dto.getCreatedAt());
 
         return coursDeChanges;
     }

@@ -106,6 +106,7 @@ public class ListesDeBaseDTOConverter implements Converter<ListesDeBaseDTO, List
         listesDeBase.setBanques(new_list_banque);
         listesDeBase.setCreatedBy(dto.getCreatedBy());
         listesDeBase.setUpdatedBy(dto.getUpdatedBy());
+        listesDeBase.setCreatedAt(dto.getCreatedAt());
 
         return listesDeBase;
     }

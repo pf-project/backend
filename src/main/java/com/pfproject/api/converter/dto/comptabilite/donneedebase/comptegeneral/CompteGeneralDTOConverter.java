@@ -19,6 +19,7 @@ public class CompteGeneralDTOConverter implements Converter<CompteGeneralDTO, Co
         compteGeneral.setTypecompte(dto.getTypecompte());
 
         compteGeneral.setCreatedBy(dto.getCreatedBy());
+        compteGeneral.setCreatedAt(dto.getCreatedAt());
         compteGeneral.setUpdatedBy(dto.getUpdatedBy());
         return compteGeneral;
     }

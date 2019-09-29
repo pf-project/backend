@@ -38,6 +38,7 @@ public class ArticleDTOConverter implements Converter<ArticleDTO, Article> {
         article.setPrix_achat_TTC(dto.getPrix_achat_TTC());
         article.setPrix_moyen_pendere(dto.getPrix_moyen_pendere());
         article.setMarge(dto.isMarge());
+        article.setCreatedAt(dto.getCreatedAt());
 
         article.setTaux_marge(dto.getTaux_marge());
         article.setMontant_marge(dto.getMontant_marge());

@@ -36,6 +36,8 @@ public class FournisseurDTOConverter implements Converter<FournisseurDTO, Fourni
         fournisseur.setVille(dto.getVille());
         fournisseur.setCompte(dto.getCompte());
 
+        fournisseur.setCreatedAt(dto.getCreatedAt());
+
         fournisseur.setCreatedBy(dto.getCreatedBy());
         fournisseur.setUpdatedBy(dto.getUpdatedBy());
 

@@ -24,7 +24,7 @@ public class ServiceDTOConverter implements Converter<ServiceDTO, Service> {
         service.setPrix_achat_TTC(dto.getPrix_achat_TTC());
         service.setPrix_moyen_pendere(dto.getPrix_moyen_pendere());
         service.setMarge(dto.getMarge());
-
+        service.setCreatedAt(dto.getCreatedAt());
         service.setTaux_marge(dto.getTaux_marge());
         service.setMontant_marge(dto.getMontant_marge());
         service.setPrix_vente_HT(dto.getPrix_vente_HT());
