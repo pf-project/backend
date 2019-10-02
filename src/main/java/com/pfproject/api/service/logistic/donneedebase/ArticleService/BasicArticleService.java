@@ -4,6 +4,7 @@ import com.pfproject.api.model.logistic.donneedebase.Article;
 import com.pfproject.api.repository.donnedebase.ArticleRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,7 @@ public class BasicArticleService implements ArticleService {
     public Article update(final String code, final Article article) {
 
         final Article saved = repository.findByCode(code);
-        article.setId(saved.getId());
+        article.setId(new ObjectId(saved.getId()));
 
         article.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 

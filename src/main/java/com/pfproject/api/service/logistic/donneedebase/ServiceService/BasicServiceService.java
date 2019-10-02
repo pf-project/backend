@@ -3,6 +3,7 @@ package com.pfproject.api.service.logistic.donneedebase.ServiceService;
 import com.pfproject.api.repository.donnedebase.ServiceRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +45,7 @@ public class BasicServiceService implements ServiceService {
             final com.pfproject.api.model.logistic.donneedebase.Service service) {
 
         final com.pfproject.api.model.logistic.donneedebase.Service saved = repository.findByCode(code);
-        service.setId(saved.getId());
+        service.setId(new ObjectId(saved.getId()));
 
         service.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 

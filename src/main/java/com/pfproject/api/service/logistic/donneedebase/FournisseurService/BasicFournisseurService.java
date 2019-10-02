@@ -4,6 +4,7 @@ import com.pfproject.api.model.logistic.donneedebase.Fournisseur;
 import com.pfproject.api.repository.donnedebase.FournisseurRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +46,7 @@ public class BasicFournisseurService implements FournisseurService {
             final Fournisseur fournisseur) {
 
         final Fournisseur saved = repository.findByCode(code);
-        fournisseur.setId(saved.getId());
+        fournisseur.setId(new ObjectId(saved.getId()));
 
         fournisseur.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 

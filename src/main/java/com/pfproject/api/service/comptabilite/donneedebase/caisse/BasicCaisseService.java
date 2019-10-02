@@ -5,6 +5,7 @@ import com.pfproject.api.repository.comptabilite.donneedebase.caisse.CaisseRepos
 import com.pfproject.api.repository.comptabilite.donneedebase.comptegeneral.CompteGeneralRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +52,7 @@ public class BasicCaisseService implements CaisseService {
 
         final Caisse saved = repository.findOne(id);
 
-        caisse.setId(saved.getId());
+        caisse.setId(new ObjectId(saved.getId()));
         caisse.setClasse(5);
         caisse.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 

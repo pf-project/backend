@@ -4,6 +4,7 @@ import com.pfproject.api.model.comptabilite.donneedebase.comptegeneral.CompteGen
 import com.pfproject.api.repository.comptabilite.donneedebase.comptegeneral.CompteGeneralRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,7 +74,7 @@ public class BasicCompteGeneralService implements CompteGeneralService {
     public CompteGeneral update(final String id, final CompteGeneral caisse) {
 
         final CompteGeneral saved = repository.findOne(id);
-        caisse.setId(saved.getId());
+        caisse.setId(new ObjectId(saved.getId()));
 
         caisse.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 

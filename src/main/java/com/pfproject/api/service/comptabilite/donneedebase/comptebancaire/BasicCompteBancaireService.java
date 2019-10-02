@@ -4,6 +4,7 @@ import com.pfproject.api.model.comptabilite.donneedebase.comptebancaire.CompteBa
 import com.pfproject.api.repository.comptabilite.donneedebase.comptebancaire.CompteBancaireRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,7 @@ public class BasicCompteBancaireService implements CompteBancaireService {
     public CompteBancaire update(final String code, final CompteBancaire caisse) {
 
         final CompteBancaire saved = repository.findByCode(code);
-        caisse.setId(saved.getId());
+        caisse.setId(new ObjectId(saved.getId()));
 
         caisse.setUpdatedAt(String.valueOf(LocalDateTime.now()));
 
